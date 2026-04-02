@@ -22,7 +22,7 @@
 :root {
   --ff-display:'Sora',sans-serif;--ff-body:'Plus Jakarta Sans',sans-serif;--ff-mono:'JetBrains Mono',monospace;
   --fs-hero:clamp(44px,12vw,60px);--fs-h2:clamp(22px,5vw,28px);--fs-h3:clamp(17px,4vw,20px);
-  --fs-body:17px;--fs-body-sm:15px;--fs-caption:13px;--fs-micro:11px;--fs-nano:10px;
+  --fs-body:18px;--fs-body-sm:16px;--fs-caption:14px;--fs-micro:12px;--fs-nano:11px;
   --lh-tight:1.15;--lh-snug:1.3;--lh-normal:1.65;--lh-loose:1.8;
   --ls-tight:-0.03em;--ls-normal:0.01em;--ls-wide:0.06em;--ls-ultra:0.12em;
   --fw-regular:400;--fw-medium:500;--fw-semi:600;--fw-bold:700;--fw-black:800;
@@ -44,23 +44,18 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-normal);letter-spacing:var(--ls-normal);font-weight:var(--fw-regular);padding-bottom:env(safe-area-inset-bottom,24px);transition:background .4s,color .4s;overflow-x:hidden}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;justify-content:space-between;align-items:center;padding:0 var(--sp-lg);height:40px;padding-top:env(safe-area-inset-top,0px);background:var(--floor);font-family:var(--ff-mono);font-size:var(--fs-micro);color:var(--dim2);letter-spacing:var(--ls-wide)}
-.topbar-title{font-weight:var(--fw-bold);color:var(--dim);text-transform:uppercase}
-.topbar-title b{color:var(--text);font-weight:var(--fw-black)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;justify-content:space-between;align-items:center;padding:0 var(--sp-lg);height:48px;padding-top:env(safe-area-inset-top,0px);background:var(--surface);font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);letter-spacing:var(--ls-wide);box-shadow:0 1px 0 var(--section)}
+.topbar-title{font-weight:var(--fw-bold);color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.topbar-title b{color:var(--accent);font-weight:var(--fw-black);font-size:var(--fs-body-sm)}
+.topbar-dot{color:var(--accent);font-size:18px;line-height:1}
 .topbar-info{font-size:var(--fs-nano);color:var(--dim2)}
-.hero{padding:28px var(--sp-lg) 24px;margin-top:calc(40px + env(safe-area-inset-top,0px));background:var(--surface);transition:opacity .2s ease}
+.hero{padding:28px var(--sp-lg) 24px;margin-top:calc(48px + env(safe-area-inset-top,0px));background:var(--surface);transition:opacity .2s ease}
 .hero.switching{opacity:0}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:0.75rem;font-weight:var(--fw-medium);text-transform:uppercase;color:var(--accent);background:var(--section);padding:8px 18px;border-radius:100px;letter-spacing:var(--ls-wide)}
 .hero h1{font-family:var(--ff-display);font-size:3.5rem;font-weight:var(--fw-black);letter-spacing:-0.04em;line-height:.95;margin-top:14px}
 .hero h1 span{color:var(--accent)}
 .hero .sub{font-family:var(--ff-body);font-size:1rem;color:var(--dim);margin-top:10px;font-weight:var(--fw-regular);line-height:1.45;max-width:340px}
-.base-card{margin:0 20px 24px;padding:var(--sp-card);background:var(--surface);border-radius:var(--r);box-shadow:var(--glow)}
-.base-card .lbl{font-family:var(--ff-mono);color:var(--dim2);font-size:var(--fs-nano);text-transform:uppercase;letter-spacing:var(--ls-ultra);font-weight:var(--fw-bold);margin-top:18px}
-.base-card .lbl:first-child{margin-top:0}
-.base-card .val{font-weight:var(--fw-semi);font-size:var(--fs-body-sm);margin-top:4px;line-height:var(--lh-snug)}
-.base-card .val-sm{font-size:var(--fs-caption);color:var(--dim);font-family:var(--ff-mono);font-weight:var(--fw-regular);margin-top:2px;letter-spacing:0}
-.base-card .val-detail{font-size:var(--fs-caption);margin-top:2px}
-.tabs-wrap{position:sticky;top:calc(40px + env(safe-area-inset-top,0px));z-index:1000;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.tabs-wrap{position:sticky;top:calc(48px + env(safe-area-inset-top,0px));z-index:1000;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .tabs{display:flex;max-width:600px;margin:0 auto}
 .tabs button{flex:1;padding:18px 0;min-height:52px;border:none;background:none;font-family:var(--ff-display);font-size:var(--fs-body-sm);font-weight:var(--fw-bold);color:var(--dim2);position:relative;cursor:pointer;letter-spacing:var(--ls-wide);transition:color .2s}
 .tabs button{transition:color .2s,transform .1s}.tabs button:active{transform:scale(.96)}.tabs button.on{color:var(--text)}
@@ -146,9 +141,24 @@ body.offline .offline-badge{display:block}
 .hotel-card .hc-title{font-family:var(--ff-display);font-size:var(--fs-caption);font-weight:var(--fw-bold);margin-bottom:4px;letter-spacing:var(--ls-tight)}
 .hotel-card .hc-text{font-size:var(--fs-micro);color:var(--dim);line-height:var(--lh-normal)}
 @media(max-width:380px){.hotel-grid{grid-template-columns:1fr}}
+
+.idx-day{margin:0 20px 12px;background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--glow);cursor:pointer;transition:transform .1s}
+.idx-day:active{transform:scale(.98)}
+.idx-day-hd{display:flex;align-items:baseline;gap:12px;padding:20px 24px 14px}
+.idx-num{font-family:var(--ff-mono);font-size:2.5rem;font-weight:var(--fw-black);color:var(--accent);line-height:1;letter-spacing:-0.04em}
+.idx-label{font-family:var(--ff-display);font-size:1.3rem;font-weight:var(--fw-bold);letter-spacing:var(--ls-tight)}
+.idx-sub{font-size:var(--fs-caption);color:var(--dim);font-weight:var(--fw-regular)}
+.idx-items{padding:0 24px 20px;display:flex;flex-direction:column;gap:8px}
+.idx-item{display:flex;align-items:center;gap:10px;font-size:var(--fs-body-sm)}
+.idx-time{font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);min-width:42px;font-weight:var(--fw-medium)}
+.idx-cat{font-family:var(--ff-mono);font-size:8px;font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:var(--ls-wide);padding:2px 7px;border-radius:4px;min-width:52px;text-align:center}
+.idx-name{font-weight:var(--fw-medium);flex:1}
+.idx-quick{display:flex;gap:10px;padding:24px 20px 0}
+.idx-btn{flex:1;padding:16px 12px;background:var(--section);border-radius:var(--rs);border:none;color:var(--text);font-family:var(--ff-display);font-size:var(--fs-caption);font-weight:var(--fw-bold);cursor:pointer;transition:transform .1s;text-align:center}
+.idx-btn:active{transform:scale(.96);background:var(--interact)}
 .foot{text-align:center;padding:var(--sp-2xl) var(--sp-lg) 100px;color:var(--dim2);font-size:var(--fs-caption);font-weight:var(--fw-medium);letter-spacing:var(--ls-normal)}
 @media(max-width:380px){:root{--fs-body:16px;--fs-body-sm:14px;--fs-caption:12px;--r:24px;--rs:16px}.blk-hd{padding:16px 18px;gap:10px}.blk-time{min-width:52px;padding:4px 8px}.tabs button{padding:14px 0;font-size:var(--fs-caption)}}
-@media(min-width:431px){.hero{padding-left:var(--sp-xl);padding-right:var(--sp-xl)}.blk,.stbl,.alert{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}.base-card,.pins,.kit{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}}
+@media(min-width:431px){.hero{padding-left:var(--sp-xl);padding-right:var(--sp-xl)}.blk,.stbl,.alert{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}.pins,.kit{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}}
 @media(orientation:landscape) and (max-height:500px){.hero{padding:36px var(--sp-lg) 20px}:root{--fs-hero:36px;--fs-h2:22px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 @media print{:root{--floor:#fff;--surface:#fff;--section:#f8f8f8;--text:#000;--dim:#333}.tt,.tabs-wrap,.share-btn{display:none}.panel{display:block!important}.blk-bd{display:block!important}}
@@ -157,8 +167,8 @@ body.offline .offline-badge{display:block}
 <body>
 
 <div class="topbar">
-  <span class="topbar-title">Viaje <b>BERLÍN</b></span>
-  <span class="topbar-info">Abr/May 2026 · 4 adultos + 1 niño</span>
+  <span class="topbar-title">🇩🇪 <b>BERLÍN</b> <span class="topbar-dot">·</span> Abr/May 2026</span>
+  <span class="topbar-info">4 adultos + 1 niño (12)</span>
 </div>
 
 <button class="tt" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">☀️</button>
@@ -169,30 +179,76 @@ body.offline .offline-badge{display:block}
   <p class="sub" id="heroSub">Flujo Total · 3 Días · 4 Adultos + 1 Teen (12 años)</p>
 </header>
 
-<section class="base-card" id="baseCard">
-  <div class="lbl">Hotel</div>
-  <div class="val">🏨 Mercure Hotel & Residenz, Checkpoint Charlie</div>
-  <div class="val-sm">📍 Schützenstraße 11, 10117 Berlin-Mitte</div>
-  <div class="lbl">Metro Base</div>
-  <div class="val">🚇 U Kochstraße (U6) — 4 min a pie</div>
-  <div class="lbl">Servicios</div>
-  <div class="val">🍳 Desayuno buffet incluido · 🧖 Sauna + Gym · 🍷 Bar Checkpoint (lobby)</div>
-  <div class="lbl">A pie desde el hotel</div>
-  <div class="val-detail">Puerta Brandeburgo 12 min · Topografía Terror 5 min · Gendarmenmarkt 6 min · Potsdamer Platz 10 min</div>
-</section>
+
 
 <nav class="tabs-wrap"><div class="tabs">
-  <button class="on" onclick="go(0)">VIE</button>
-  <button onclick="go(1)">SÁB</button>
-  <button onclick="go(2)">DOM</button>
-  <button onclick="go(3)">LUN</button>
-  <button onclick="go(4)">📍</button>
-  <button onclick="go(5)">🏨</button>
-  <button onclick="go(6)">📖</button>
+  <button class="on" onclick="go(0)">🏠</button>
+  <button onclick="go(1)">VIE</button>
+  <button onclick="go(2)">SÁB</button>
+  <button onclick="go(3)">DOM</button>
+  <button onclick="go(4)">LUN</button>
+  <button onclick="go(5)">📍</button>
+  <button onclick="go(6)">🏨</button>
+  <button onclick="go(7)">📖</button>
 </div></nav>
 
+<!-- ═══════════════════════════════ INICIO ═══════════════════════════════ -->
+<div class="panel on" id="phome">
+<div class="dhdr"><div class="tag">Índice completo</div><h2>Tu viaje en un vistazo</h2><div class="obj">Toca cualquier actividad para ir directamente</div></div>
+
+<div class="idx-day" onclick="go(1)">
+  <div class="idx-day-hd"><span class="idx-num">01</span><span class="idx-label">Viernes</span><span class="idx-sub">Llegada + Inmersión</span></div>
+  <div class="idx-items">
+    <div class="idx-item"><span class="idx-time">19:35</span><span class="idx-cat cc">VUELO</span><span class="idx-name">✈️ Llegada BER</span></div>
+    <div class="idx-item"><span class="idx-time">20:15</span><span class="idx-cat ch">HOTEL</span><span class="idx-name">🏨 Check-in + REWE</span></div>
+    <div class="idx-item"><span class="idx-time">20:45</span><span class="idx-cat cc">CENA</span><span class="idx-name">🍽️ Katz Orange</span></div>
+    <div class="idx-item"><span class="idx-time">22:30</span><span class="idx-cat cp">PASEO</span><span class="idx-name">🌙 Brandenburger Tor</span></div>
+  </div>
+</div>
+
+<div class="idx-day" onclick="go(2)">
+  <div class="idx-day-hd"><span class="idx-num">02</span><span class="idx-label">Sábado</span><span class="idx-sub">Historia + Vibe</span></div>
+  <div class="idx-items">
+    <div class="idx-item"><span class="idx-time">09:30</span><span class="idx-cat cm">VISITA</span><span class="idx-name">🏛️ Cúpula Reichstag</span></div>
+    <div class="idx-item"><span class="idx-time">10:45</span><span class="idx-cat cp">MEMORIAL</span><span class="idx-name">◼️ Memorial Holocausto</span></div>
+    <div class="idx-item"><span class="idx-time">11:15</span><span class="idx-cat cm">MUSEO</span><span class="idx-name">🕵️ Spy Museum</span></div>
+    <div class="idx-item"><span class="idx-time">13:15</span><span class="idx-cat cc">MERCADO</span><span class="idx-name">🍽️ Markthalle Neun</span></div>
+    <div class="idx-item"><span class="idx-time">14:30</span><span class="idx-cat cp">ARTE</span><span class="idx-name">🎨 East Side Gallery</span></div>
+    <div class="idx-item"><span class="idx-time">15:30</span><span class="idx-cat cm">MUSEO</span><span class="idx-name">🎮 Computerspielemuseum</span></div>
+    <div class="idx-item"><span class="idx-time">17:15</span><span class="idx-cat cp">LIBRE</span><span class="idx-name">🛹 Boxhagener Platz</span></div>
+    <div class="idx-item"><span class="idx-time">18:00</span><span class="idx-cat cc">SUNSET</span><span class="idx-name">🍽️🌅 Klunkerkranich</span></div>
+  </div>
+</div>
+
+<div class="idx-day" onclick="go(3)">
+  <div class="idx-day-hd"><span class="idx-num">03</span><span class="idx-label">Domingo</span><span class="idx-sub">Ciencia + Río</span></div>
+  <div class="idx-items">
+    <div class="idx-item"><span class="idx-time">10:00</span><span class="idx-cat cm">MUSEO</span><span class="idx-name">🔧 Technikmuseum + Spectrum</span></div>
+    <div class="idx-item"><span class="idx-time">12:15</span><span class="idx-cat cc">BURGER</span><span class="idx-name">🍽️ Burgermeister</span></div>
+    <div class="idx-item"><span class="idx-time">13:15</span><span class="idx-cat cm">MUSEO</span><span class="idx-name">🏘️ DDR Museum</span></div>
+    <div class="idx-item"><span class="idx-time">14:30</span><span class="idx-cat cp">CRUCERO</span><span class="idx-name">🛥️ Crucero Spree (1h)</span></div>
+    <div class="idx-item"><span class="idx-time">15:30</span><span class="idx-cat cs">COMPRAS</span><span class="idx-name">🛍️ Hackescher Markt</span></div>
+    <div class="idx-item"><span class="idx-time">16:15</span><span class="idx-cat cm">TORRE</span><span class="idx-name">📡 Fernsehturm</span></div>
+  </div>
+</div>
+
+<div class="idx-day" onclick="go(4)">
+  <div class="idx-day-hd"><span class="idx-num">04</span><span class="idx-label">Lunes</span><span class="idx-sub">Despedida</span></div>
+  <div class="idx-items">
+    <div class="idx-item"><span class="idx-time">07:15</span><span class="idx-cat cc">DESAYUNO</span><span class="idx-name">☕ Último desayuno</span></div>
+    <div class="idx-item"><span class="idx-time">19:30</span><span class="idx-cat cc">CENA</span><span class="idx-name">🍽️ Cena de Despedida</span></div>
+  </div>
+</div>
+
+<div class="idx-quick">
+  <button class="idx-btn" onclick="go(5)">📍 Mapa Pins</button>
+  <button class="idx-btn" onclick="go(6)">🏨 Info Hotel</button>
+  <button class="idx-btn" onclick="go(7)">📖 Guía Sitios</button>
+</div>
+</div>
+
 <!-- ═══════════════════════════════ DÍA 1 ═══════════════════════════════ -->
-<div class="panel on" id="p0">
+<div class="panel" id="p0">
 <div class="dhdr"><div class="tag">Viernes 24 Abril · Día 1</div><h2>Llegada + Inmersión Nocturna</h2><div class="obj">Instalarse, cenar, absorber Berlín de noche</div></div>
 <div class="stbl"><table>
 <tr><th>Hora</th><th>Actividad</th><th>Cómo</th><th>€</th></tr>
@@ -813,7 +869,9 @@ body.offline .offline-badge{display:block}
 
 <script>
 // Hero data per tab
+const P=['phome','p0','p1','p2','p3','p4','p5','p6'];
 const H=[
+  {b:'🏠 Índice del Viaje',t:'Berlín<span>.</span>',s:'Tu viaje completo en un vistazo'},
   {b:'⚡ Día 1 · Viernes',t:'Llegada<span>.</span>',s:'Instalarse, cenar y absorber Berlín de noche'},
   {b:'⚡ Día 2 · Sábado',t:'Historia<span>.</span>',s:'Museos, street art, mercados y sunset secreto'},
   {b:'⚡ Día 3 · Domingo',t:'Ciencia<span>.</span>',s:'Technikmuseum, río Spree y despedida'},
@@ -829,11 +887,10 @@ function go(n){
   // Update panels + tabs
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
-  document.getElementById('p'+n).classList.add('on');
+  document.getElementById(P[n]).classList.add('on');
   document.querySelectorAll('.tabs button')[n].classList.add('on');
   // Animate hero
   const hero=document.getElementById('hero');
-  const card=document.getElementById('baseCard');
   hero.classList.add('switching');
   setTimeout(()=>{
     document.getElementById('heroBadge').innerHTML=H[n].b;
@@ -841,8 +898,6 @@ function go(n){
     document.getElementById('heroSub').innerHTML=H[n].s;
     hero.classList.remove('switching');
   },200);
-  // Hide base-card on 📍, 🏨, 📖 tabs
-  card.style.display=n<=3?'':'none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function tog(id){document.getElementById(id).classList.toggle('open')}
