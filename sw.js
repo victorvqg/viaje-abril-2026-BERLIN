@@ -1,4 +1,4 @@
-const CACHE_NAME = 'berlin-mission-v5';
+const CACHE_NAME = 'berlin-mission-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -21,9 +21,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // Always let Google Maps links go through to network
   if (e.request.url.includes('google.com/maps')) return;
-  // Cache-first for everything else
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
       if (res.ok && e.request.method === 'GET') {
