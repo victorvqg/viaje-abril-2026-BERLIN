@@ -56,7 +56,7 @@ body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-s
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:0.75rem;font-weight:var(--fw-medium);text-transform:uppercase;color:var(--accent);background:var(--section);padding:8px 18px;border-radius:100px;letter-spacing:var(--ls-wide)}
 .hero h1{font-family:var(--ff-display);font-size:3.5rem;font-weight:var(--fw-black);letter-spacing:-0.04em;line-height:.95;margin-top:14px}
 .hero h1 span{color:var(--accent)}
-.hero .sub{font-family:var(--ff-body);font-size:1rem;color:var(--dim);margin-top:10px;font-weight:var(--fw-regular);line-height:1.45;max-width:340px}
+.hero .sub{font-family:var(--ff-body);font-size:1rem;color:var(--dim);margin-top:10px;font-weight:var(--fw-regular);line-height:1.45;}
 .tabs-wrap{position:sticky;top:calc(48px + env(safe-area-inset-top,0px));z-index:1000;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .tabs{display:flex;max-width:600px;margin:0 auto;padding:6px 8px;gap:4px}
 .tabs button{flex:1;padding:10px 4px;min-height:44px;border:none;background:none;font-family:var(--ff-display);font-size:var(--fs-body-sm);font-weight:var(--fw-bold);color:var(--dim2);cursor:pointer;letter-spacing:var(--ls-wide);border-radius:12px;transition:color .2s,background .2s,transform .1s}
@@ -178,7 +178,7 @@ body.offline .offline-badge{display:block}
 <header class="hero" id="hero">
   <div class="hero-badge" id="heroBadge">⚡ Misión Berlín 2026</div>
   <h1 id="heroTitle">Berlín<span>.</span></h1>
-  <p class="sub" id="heroSub">Viaje: 4 dies — Mayte, Sílvia, Xavi, Victor y Biel</p>
+  <p class="sub" id="heroSub">Viaje: 4 dies — <b>Mayte, Sílvia, Xavi, Victor y Biel</b></p>
 </header>
 
 
@@ -876,7 +876,7 @@ body.offline .offline-badge{display:block}
 // Hero data per tab
 const P=['phome','p0','p1','p2','p3','p4','p5','p6'];
 const H=[
-  {b:'🏠 Índice del Viaje',t:'Berlín<span>.</span>',s:'Viaje: 4 dies — Mayte, Sílvia, Xavi, Victor y Biel'},
+  {b:'🏠 Índice del Viaje',t:'Berlín<span>.</span>',s:'Viaje: 4 dies — <b>Mayte, Sílvia, Xavi, Victor y Biel</b>'},
   {b:'⚡ Día 1 · Viernes',t:'Llegada<span>.</span>',s:'Instalarse, cenar y absorber Berlín de noche'},
   {b:'⚡ Día 2 · Sábado',t:'Historia<span>.</span>',s:'Museos, street art, mercados y sunset secreto'},
   {b:'⚡ Día 3 · Domingo',t:'Ciencia<span>.</span>',s:'Technikmuseum, río Spree y despedida'},
