@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0B0E14" id="meta-theme">
+<title>Misión Berlín · 24-27 Abril 2026</title>
+<meta name="description" content="Guía de Flujo Total — 3 días en Berlín. Navegación paso a paso para 5 viajeros.">
+<meta property="og:title" content="Misión Berlín 2026">
+<meta property="og:description" content="Guía interactiva de viaje: 3 días en Berlín con rutas, transporte, restaurantes y misiones teen.">
+<meta property="og:type" content="website">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇩🇪</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B0E14'/><text x='50' y='68' text-anchor='middle' font-size='52'>🇩🇪</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   THE NOCTURNAL CONCIERGE — Berlin Mission Guide
+   Design System: Tonal Layering · Glass Rule · Ambient Glow
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Tonal Layering */
+  --floor: #0B0E14;
+  --surface: #10131A;
+  --section: #191C22;
+  --interact: #32353C;
+
+  /* Accent System */
+  --accent: #FF3D5A;
+  --accent-glow: rgba(255,61,90,.15);
+  --accent-soft: rgba(255,61,90,.08);
+  --blue: #4B9EFF;
+  --blue-glow: rgba(75,158,255,.12);
+  --green: #10B981;
+  --green-glow: rgba(16,185,129,.1);
+  --orange: #F59E0B;
+  --orange-glow: rgba(245,158,11,.1);
+  --teal: #2DD4BF;
+  --teal-glow: rgba(45,212,191,.08);
+  --purple: #8B5CF6;
+  --purple-glow: rgba(139,92,246,.1);
+  --teen: #EC4899;
+  --teen-glow: rgba(236,72,153,.08);
+
+  /* Typography Colors */
+  --text: #E1E2EB;
+  --dim: #9BA1B0;
+  --dim2: #636A78;
+
+  /* Ghost Border (only inputs/interactive) */
+  --ghost: rgba(92,63,64,.15);
+
+  /* Ambient Glow */
+  --glow: 0 0 40px rgba(225,226,235,.06);
+  --glow-accent: 0 0 30px rgba(255,61,90,.08);
+  --glow-blue: 0 0 30px rgba(75,158,255,.08);
+
+  /* Glass Rule */
+  --glass: rgba(16,19,26,.6);
+  --glass-blur: blur(20px);
+
+  /* Radii — 32px cards per spec */
+  --r: 32px;
+  --rs: 20px;
+  --r-pill: 100px;
+
+  /* Font Families */
+  --ff-display: 'Sora', sans-serif;
+  --ff-body: 'Plus Jakarta Sans', sans-serif;
+  --ff-mono: 'JetBrains Mono', monospace;
+
+  /* Type Scale */
+  --fs-hero: clamp(44px, 12vw, 60px);
+  --fs-h2: clamp(22px, 5vw, 28px);
+  --fs-h3: clamp(17px, 4vw, 20px);
+  --fs-body: 17px;
+  --fs-body-sm: 15px;
+  --fs-caption: 13px;
+  --fs-micro: 11px;
+  --fs-nano: 10px;
+
+  /* Line Heights */
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-normal: 1.65;
+  --lh-loose: 1.8;
+
+  /* Letter Spacing */
+  --ls-tight: -0.03em;
+  --ls-normal: 0.01em;
+  --ls-wide: 0.06em;
+  --ls-ultra: 0.12em;
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* Spacing */
+  --sp-xs: 6px;
+  --sp-sm: 10px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 32px;
+  --sp-2xl: 48px;
+  --sp-card: 2rem; /* internal card spacing per spec */
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --floor: #F0F1F5;
+  --surface: #F8FAFC;
+  --section: #FFFFFF;
+  --interact: #E8EAF0;
+  --accent: #E11D48;
+  --accent-glow: rgba(225,29,72,.08);
+  --accent-soft: rgba(225,29,72,.04);
+  --blue: #2563EB;
+  --blue-glow: rgba(37,99,235,.08);
+  --green: #059669;
+  --green-glow: rgba(5,150,105,.06);
+  --orange: #D97706;
+  --orange-glow: rgba(217,119,6,.06);
+  --teal: #0D9488;
+  --teal-glow: rgba(13,148,136,.06);
+  --purple: #7C3AED;
+  --purple-glow: rgba(124,58,237,.06);
+  --teen: #DB2777;
+  --teen-glow: rgba(219,39,119,.05);
+  --text: #1A1D27;
+  --dim: #4A5064;
+  --dim2: #8B91A0;
+  --ghost: rgba(0,0,0,.06);
+  --glow: 0 0 40px rgba(0,0,0,.04);
+  --glow-accent: 0 0 30px rgba(225,29,72,.05);
+  --glow-blue: 0 0 30px rgba(37,99,235,.05);
+  --glass: rgba(248,250,252,.6);
+}
+
+/* ── RESET ── */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  font-family:var(--ff-body);
+  background:var(--floor);color:var(--text);
+  font-size:var(--fs-body);line-height:var(--lh-normal);
+  letter-spacing:var(--ls-normal);font-weight:var(--fw-regular);
+  padding-bottom:env(safe-area-inset-bottom,24px);
+  transition:background .4s ease,color .4s ease;
+  overflow-x:hidden;
+}
+
+/* ═══════════ HERO ═══════════ */
+.hero{
+  padding:80px var(--sp-lg) 44px;
+  padding-top:calc(80px + env(safe-area-inset-top,0px));
+  background:var(--surface);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff-mono);font-size:var(--fs-micro);font-weight:var(--fw-bold);
+  text-transform:uppercase;color:var(--accent);
+  background:var(--section);padding:8px 18px;border-radius:var(--r-pill);
+  letter-spacing:var(--ls-wide);
+}
+.hero h1{
+  font-family:var(--ff-display);
+  font-size:var(--fs-hero);font-weight:var(--fw-black);
+  letter-spacing:-0.04em;line-height:var(--lh-tight);
+  margin-top:20px;
+}
+.hero h1 span{color:var(--accent)}
+.hero .sub{
+  font-family:var(--ff-body);font-size:var(--fs-body-sm);color:var(--dim);
+  margin-top:14px;font-weight:var(--fw-medium);
+}
+
+/* ═══════════ BASE CARD ═══════════ */
+.base-card{
+  margin:0 var(--sp-lg) var(--sp-lg);padding:var(--sp-card);
+  background:var(--section);border-radius:var(--r);
+  box-shadow:var(--glow);
+}
+.base-card .lbl{
+  font-family:var(--ff-mono);color:var(--dim2);font-size:var(--fs-nano);
+  text-transform:uppercase;letter-spacing:var(--ls-ultra);
+  font-weight:var(--fw-bold);margin-top:18px;
+}
+.base-card .lbl:first-child{margin-top:0}
+.base-card .val{font-weight:var(--fw-semi);font-size:var(--fs-body-sm);margin-top:4px;line-height:var(--lh-snug)}
+.base-card .val-sm{font-size:var(--fs-caption);color:var(--dim);font-family:var(--ff-mono);margin-top:2px}
+.base-card .val-detail{font-size:var(--fs-caption);margin-top:2px}
+
+/* ═══════════ TABS — Glass Rule ═══════════ */
+.tabs-wrap{
+  position:sticky;top:0;z-index:1000;
+  background:var(--glass);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+}
+.tabs{display:flex;max-width:600px;margin:0 auto}
+.tabs button{
+  flex:1;padding:18px 0;min-height:52px;border:none;background:none;
+  font-family:var(--ff-display);font-size:var(--fs-body-sm);font-weight:var(--fw-bold);
+  color:var(--dim2);position:relative;cursor:pointer;
+  letter-spacing:var(--ls-wide);transition:color .2s;
+}
+.tabs button.on{color:var(--accent)}
+/* Active indicator: coral dot, not filled icon */
+.tabs button.on::after{
+  content:'';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 8px rgba(255,61,90,.4);
+}
+
+/* ═══════════ PANELS ═══════════ */
+.panel{display:none;padding:var(--sp-lg) 0}
+.panel.on{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ═══════════ DAY HEADER — Section Layer ═══════════ */
+.dhdr{padding:var(--sp-lg) var(--sp-lg) var(--sp-md);background:var(--section);margin:0 0 var(--sp-sm)}
+.dhdr .tag{
+  font-family:var(--ff-mono);font-size:var(--fs-nano);color:var(--accent);
+  text-transform:uppercase;letter-spacing:var(--ls-ultra);font-weight:var(--fw-bold);
+}
+.dhdr h2{
+  font-family:var(--ff-display);font-size:var(--fs-h2);font-weight:var(--fw-black);
+  letter-spacing:var(--ls-tight);margin-top:6px;line-height:var(--lh-tight);
+}
+.dhdr .obj{font-size:var(--fs-caption);color:var(--dim);font-style:italic;margin-top:4px}
+
+/* ═══════════ SUMMARY TABLE ═══════════ */
+.stbl{
+  margin:0 var(--sp-lg) var(--sp-md);border-radius:var(--rs);
+  overflow:hidden;-webkit-overflow-scrolling:touch;overflow-x:auto;
+  background:var(--section);box-shadow:var(--glow);
+}
+.stbl table{width:100%;border-collapse:collapse;font-size:var(--fs-caption);min-width:340px}
+.stbl th{
+  background:var(--accent);color:#fff;padding:10px 12px;text-align:left;
+  font-family:var(--ff-display);font-size:var(--fs-nano);font-weight:var(--fw-bold);
+  text-transform:uppercase;letter-spacing:var(--ls-wide);
+}
+.stbl td{padding:10px 12px}
+.stbl tr:nth-child(even) td{background:var(--surface)}
+.stbl tr:nth-child(odd) td{background:var(--section)}
+.stbl tr:last-child td{border-bottom:none}
+.stbl .c{font-family:var(--ff-mono);font-size:var(--fs-micro);color:var(--green);font-weight:var(--fw-bold)}
+.stbl .t{font-weight:var(--fw-semi);font-size:var(--fs-micro)}
+
+/* ═══════════ ALERT ═══════════ */
+.alert{
+  margin:0 var(--sp-lg) var(--sp-md);padding:14px 18px;
+  background:var(--accent-soft);border-radius:var(--rs);
+  font-family:var(--ff-display);font-size:var(--fs-body-sm);
+  font-weight:var(--fw-bold);color:var(--accent);
+  box-shadow:var(--glow-accent);
+}
+
+/* ═══════════ BLOCK (Accordion) — 32px radius, no borders ═══════════ */
+.blk{
+  margin:0 var(--sp-lg) var(--sp-md);
+  background:var(--section);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--glow);
+  border:none;
+}
+.blk.food{box-shadow:var(--glow-accent),inset 4px 0 0 var(--accent)}
+.blk-hd{
+  padding:22px var(--sp-lg);display:flex;align-items:center;gap:14px;
+  cursor:pointer;min-height:60px;-webkit-user-select:none;user-select:none;
+}
+.blk-time{
+  font-family:var(--ff-mono);font-size:var(--fs-body-sm);font-weight:var(--fw-bold);
+  color:var(--blue);background:var(--blue-glow);
+  padding:6px 12px;border-radius:12px;min-width:62px;text-align:center;flex-shrink:0;
+}
+.blk.food .blk-time{color:var(--accent);background:var(--accent-glow)}
+.blk-mid{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.blk-title{
+  font-family:var(--ff-display);font-size:var(--fs-h3);font-weight:var(--fw-bold);
+  letter-spacing:var(--ls-tight);line-height:var(--lh-snug);
+}
+.blk-chev{color:var(--dim2);font-size:24px;transition:transform .25s;flex-shrink:0}
+.blk.open .blk-chev{transform:rotate(90deg);color:var(--text)}
+.blk-bd{
+  display:none;padding:0 var(--sp-lg) var(--sp-lg);
+  /* Section separation via background shift — no border-top */
+  background:linear-gradient(to bottom,var(--section),var(--surface));
+}
+.blk.open .blk-bd{display:block}
+
+/* Category badges */
+.cat{
+  font-family:var(--ff-mono);font-size:9px;font-weight:var(--fw-bold);
+  text-transform:uppercase;letter-spacing:var(--ls-wide);
+  padding:3px 9px;border-radius:6px;width:fit-content;line-height:1;white-space:nowrap;
+}
+.cm{color:var(--blue);background:var(--blue-glow)}
+.cc{color:var(--accent);background:var(--accent-glow)}
+.ch{color:var(--purple);background:var(--purple-glow)}
+.cp{color:var(--green);background:var(--green-glow)}
+.cv{color:var(--teal);background:var(--teal-glow)}
+.cs{color:var(--orange);background:var(--orange-glow)}
+
+/* ═══════════ LOCATION BOX ═══════════ */
+.loc{
+  margin:var(--sp-md) 0;padding:var(--sp-md) 18px;
+  background:var(--interact);border-radius:var(--rs);
+  border-left:4px solid var(--blue);
+}
+.blk.food .loc{border-left-color:var(--accent)}
+.loc-n{font-family:var(--ff-display);font-weight:var(--fw-black);font-size:var(--fs-body-sm);letter-spacing:var(--ls-tight)}
+.loc-a{font-size:var(--fs-caption);color:var(--dim);font-family:var(--ff-mono);margin-top:3px}
+.loc-d{font-size:var(--fs-body-sm);color:var(--dim);margin-top:6px;line-height:var(--lh-normal)}
+
+/* ═══════════ TRANSPORT TIMELINE ═══════════ */
+.tl{
+  margin:var(--sp-md) 0;background:var(--interact);
+  border-radius:var(--rs);overflow:hidden;
+}
+.tl-hdr{
+  padding:10px 16px;font-family:var(--ff-mono);font-size:var(--fs-nano);font-weight:var(--fw-bold);
+  text-transform:uppercase;letter-spacing:var(--ls-ultra);color:var(--dim2);
+  /* Separation via surface change, not border */
+  background:rgba(255,255,255,.03);
+}
+.tl-body{padding:var(--sp-md)}
+.tl-step{display:flex;gap:14px;margin-bottom:12px;position:relative}
+.tl-step:last-child{margin-bottom:0}
+.tl-dot{width:12px;height:12px;border-radius:50%;margin-top:6px;flex-shrink:0;z-index:2}
+.tl-line{position:absolute;top:18px;left:5px;width:2px;height:calc(100% + 4px);background:var(--interact);z-index:1}
+.tl-step:last-child .tl-line{display:none}
+.tl-c{flex:1}
+.tl-c b{font-family:var(--ff-body);color:var(--text);display:block;margin-bottom:2px;font-size:var(--fs-body-sm);font-weight:var(--fw-bold);line-height:var(--lh-snug)}
+.tl-c p{color:var(--dim);font-size:var(--fs-caption);margin:3px 0;line-height:var(--lh-normal)}
+.tl-c .exit{
+  display:inline-block;margin:6px 0;font-family:var(--ff-mono);font-size:var(--fs-micro);font-weight:var(--fw-bold);
+  color:var(--teal);background:var(--teal-glow);padding:4px 10px;border-radius:8px;
+}
+.dw{background:var(--green)}.dm{background:var(--blue)}.du{background:var(--orange)}.df{background:var(--teal)}.dp{background:var(--purple)}
+
+/* ═══════════ MAP BUTTON ═══════════ */
+.bmap{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--blue);color:#fff;text-decoration:none;
+  padding:16px;border-radius:var(--r-pill);
+  font-family:var(--ff-display);font-weight:var(--fw-bold);font-size:var(--fs-body-sm);
+  margin-top:var(--sp-md);width:100%;min-height:52px;
+  box-shadow:var(--glow-blue);transition:transform .1s,opacity .1s;
+}
+.bmap:active{transform:scale(.97);opacity:.9}
+.bmap.sm{
+  padding:12px 18px;font-size:var(--fs-caption);width:auto;
+  display:inline-flex;margin:var(--sp-xs) 4px var(--sp-xs) 0;
+  border-radius:var(--r-pill);min-height:44px;
+}
+
+/* ═══════════ TEEN MISSION ═══════════ */
+.teen{
+  margin:var(--sp-md) 0;padding:22px;
+  background:var(--teen-glow);border-radius:var(--rs);
+  border:1.5px dashed var(--teen);position:relative;
+}
+.teen::before{
+  content:'🎯 MISIÓN TEEN';position:absolute;top:-12px;right:16px;
+  background:var(--teen);color:#fff;font-family:var(--ff-mono);font-size:var(--fs-nano);
+  font-weight:var(--fw-bold);padding:4px 12px;border-radius:8px;letter-spacing:var(--ls-wide);
+}
+.teen p{font-size:var(--fs-body-sm);color:var(--text);line-height:var(--lh-normal)}
+.teen b{font-weight:var(--fw-black)}
+
+/* ═══════════ BUFFER + INFO ═══════════ */
+.buf{font-size:var(--fs-micro);color:var(--dim2);font-style:italic;margin:var(--sp-sm) 0}
+.nfo{font-size:var(--fs-body-sm);color:var(--dim);margin:8px 0;line-height:var(--lh-normal)}
+.nfo b,.nfo strong{color:var(--text);font-weight:var(--fw-bold)}
+
+/* ═══════════ PINS ═══════════ */
+.pins{padding:0 var(--sp-lg)}
+.pin-cat{
+  font-family:var(--ff-mono);font-size:var(--fs-nano);font-weight:var(--fw-bold);
+  color:var(--blue);letter-spacing:var(--ls-ultra);text-transform:uppercase;
+  margin:22px 0 10px;padding-bottom:8px;
+}
+.pin{
+  display:block;padding:16px 18px;margin-bottom:8px;
+  background:var(--section);border-radius:var(--rs);
+  text-decoration:none;color:var(--text);min-height:52px;
+  box-shadow:var(--glow);transition:transform .1s;
+}
+.pin:active{transform:scale(.98);background:var(--interact)}
+.pin .pn{font-family:var(--ff-display);font-weight:var(--fw-bold);font-size:var(--fs-body-sm);color:var(--blue)}
+.pin .pa{font-size:var(--fs-micro);color:var(--dim);display:block;margin-top:3px}
+
+/* ═══════════ SURVIVAL KIT ═══════════ */
+.kit{
+  margin:var(--sp-lg) var(--sp-lg) 0;padding:var(--sp-card);
+  background:var(--section);border-radius:var(--r);box-shadow:var(--glow);
+}
+.kit h3{
+  font-family:var(--ff-display);font-size:var(--fs-h3);margin-bottom:var(--sp-md);
+  color:var(--accent);font-weight:var(--fw-black);text-transform:uppercase;letter-spacing:var(--ls-wide);
+}
+.kit li{margin-bottom:10px;font-size:var(--fs-body-sm);color:var(--dim);list-style:none;line-height:var(--lh-normal)}
+.kit b{color:var(--text)}
+
+/* ═══════════ GUIDE 📖 ═══════════ */
+.guide-txt{font-size:var(--fs-body-sm);color:var(--text);line-height:var(--lh-loose);margin:8px 0 12px}
+.guide-txt b{font-weight:var(--fw-bold)}
+.guide-tip{
+  margin:12px 0;padding:16px 18px;background:var(--interact);border-radius:var(--rs);
+  border-left:3px solid var(--green);font-size:var(--fs-caption);color:var(--dim);line-height:var(--lh-normal);
+}
+.guide-tip b{color:var(--text)}
+.guide-warn{border-left-color:var(--orange)}
+.guide-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.guide-tags span{
+  font-family:var(--ff-mono);font-size:9px;font-weight:var(--fw-bold);
+  padding:4px 10px;border-radius:8px;background:var(--interact);color:var(--dim);
+}
+
+/* ═══════════ HOTEL DETAIL ═══════════ */
+.hotel-hero{
+  margin:0 var(--sp-lg) var(--sp-md);padding:var(--sp-card);
+  background:var(--section);border-radius:var(--r);text-align:center;
+  box-shadow:var(--glow);
+}
+.hotel-hero .hname{font-family:var(--ff-display);font-size:var(--fs-h2);font-weight:var(--fw-black);letter-spacing:var(--ls-tight);margin-bottom:4px}
+.hotel-hero .haddr{font-size:var(--fs-caption);color:var(--dim);font-family:var(--ff-mono)}
+.hotel-hero .hstars{font-size:18px;margin-top:8px;letter-spacing:2px}
+.hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 var(--sp-lg) var(--sp-md)}
+.hotel-card{padding:16px;background:var(--section);border-radius:var(--rs);box-shadow:var(--glow)}
+.hotel-card .hc-icon{font-size:22px;margin-bottom:6px}
+.hotel-card .hc-title{font-family:var(--ff-display);font-size:var(--fs-caption);font-weight:var(--fw-bold);margin-bottom:4px}
+.hotel-card .hc-text{font-size:var(--fs-micro);color:var(--dim);line-height:var(--lh-normal)}
+@media(max-width:380px){.hotel-grid{grid-template-columns:1fr}}
+
+/* ═══════════ SHARE BUTTON ═══════════ */
+.share-btn{
+  position:fixed;bottom:24px;left:20px;bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  height:48px;padding:0 20px;border-radius:var(--r-pill);
+  /* Glass Rule */
+  background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  color:var(--text);display:flex;align-items:center;gap:8px;
+  font-family:var(--ff-display);font-size:var(--fs-caption);font-weight:var(--fw-bold);
+  border:none;box-shadow:var(--glow);z-index:2000;cursor:pointer;transition:transform .15s;
+}
+.share-btn:active{transform:scale(.92)}
+
+/* ═══════════ OFFLINE INDICATOR ═══════════ */
+.offline-badge{
+  display:none;position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);left:50%;
+  transform:translateX(-50%);z-index:3000;
+  font-family:var(--ff-mono);font-size:9px;font-weight:var(--fw-bold);
+  color:var(--orange);background:var(--section);
+  padding:4px 12px;border-radius:var(--r-pill);box-shadow:var(--glow);
+}
+body.offline .offline-badge{display:block}
+
+/* ═══════════ THEME TOGGLE ═══════════ */
+.tt{
+  position:fixed;bottom:24px;right:20px;bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  width:58px;height:58px;border-radius:29px;
+  background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;box-shadow:0 0 24px rgba(255,61,90,.25);
+  z-index:2000;border:none;cursor:pointer;transition:transform .15s;
+}
+.tt:active{transform:scale(.88)}
+
+/* ═══════════ FOOTER ═══════════ */
+.foot{
+  text-align:center;padding:var(--sp-2xl) var(--sp-lg) 100px;
+  color:var(--dim2);font-size:var(--fs-caption);font-weight:var(--fw-medium);
+  background:var(--surface);
+}
+
+/* ═══════════ MOBILE ═══════════ */
+@media(max-width:380px){
+  :root{--fs-body:16px;--fs-body-sm:14px;--fs-caption:12px;--r:24px;--rs:16px}
+  .blk-hd{padding:16px 18px;gap:10px}
+  .blk-time{min-width:52px;padding:4px 8px}
+  .tabs button{padding:14px 0;font-size:var(--fs-caption)}
+}
+@media(min-width:431px){
+  .hero{padding-left:var(--sp-xl);padding-right:var(--sp-xl)}
+  .blk,.stbl,.alert,.dhdr{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}
+  .base-card,.pins,.kit{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}
+}
+@media(orientation:landscape) and (max-height:500px){
+  .hero{padding:36px var(--sp-lg) 20px}
+  :root{--fs-hero:36px;--fs-h2:22px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media print{
+  :root{--floor:#fff;--surface:#fff;--section:#fff;--text:#000;--dim:#333}
+  .tt,.tabs-wrap,.share-btn{display:none}.panel{display:block!important}.blk-bd{display:block!important}
+}
+
+</style>
+</head>
+<body>
+
+<button class="tt" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">☀️</button>
+
+<header class="hero">
+  <div class="hero-badge">⚡ Misión Berlín 2026</div>
+  <h1>Berlín<span>.</span></h1>
+  <p class="sub">Flujo Total · 4 Días · 24-27 Abril 2026 · 4 Adultos + 1 Teen (11 años)</p>
+</header>
+
+<section class="base-card">
+  <div class="lbl">Hotel</div>
+  <div class="val">🏨 Mercure Hotel & Residenz, Checkpoint Charlie</div>
+  <div class="val-sm">📍 Schützenstraße 11, 10117 Berlin-Mitte</div>
+  <div class="lbl">Metro Base</div>
+  <div class="val">🚇 U Kochstraße (U6) — 4 min a pie</div>
+  <div class="lbl">Servicios</div>
+  <div class="val">🍳 Desayuno buffet incluido · 🧖 Sauna + Gym · 🍷 Bar Checkpoint (lobby)</div>
+  <div class="lbl">A pie desde el hotel</div>
+  <div class="val-detail">Puerta Brandeburgo 12 min · Topografía Terror 5 min · Gendarmenmarkt 6 min · Potsdamer Platz 10 min</div>
+</section>
+
+<nav class="tabs-wrap"><div class="tabs">
+  <button class="on" onclick="go(0)">VIE</button>
+  <button onclick="go(1)">SÁB</button>
+  <button onclick="go(2)">DOM</button>
+  <button onclick="go(3)">LUN</button>
+  <button onclick="go(4)">📍</button>
+  <button onclick="go(5)">🏨</button>
+  <button onclick="go(6)">📖</button>
+</div></nav>
+
+<!-- ═══════════════════════════════ DÍA 1 ═══════════════════════════════ -->
+<div class="panel on" id="p0">
+<div class="dhdr"><div class="tag">Viernes 24 Abril · Día 1</div><h2>Llegada + Inmersión Nocturna</h2><div class="obj">Instalarse, cenar, absorber Berlín de noche</div></div>
+<div class="stbl"><table>
+<tr><th>Hora</th><th>Actividad</th><th>Cómo</th><th>€</th></tr>
+<tr><td>19:35</td><td>Llegada BER</td><td class="t">🚕 40 min</td><td class="c">~35€</td></tr>
+<tr><td>20:15</td><td>Check-in + REWE</td><td class="t">👟 5 min</td><td class="c">—</td></tr>
+<tr><td>20:45</td><td>🍽️ Katz Orange</td><td class="t">🚇 12 min</td><td class="c">25-45€/p</td></tr>
+<tr><td>22:30</td><td>Brandenburger Tor</td><td class="t">👟 20 min</td><td class="c">Gratis</td></tr>
+<tr><td>23:15</td><td>Regreso hotel</td><td class="t">👟 17 min</td><td class="c">—</td></tr>
+</table></div>
+
+<article class="blk open" id="d10"><div class="blk-hd" onclick="tog('d10')"><div class="blk-time">19:35</div><div class="blk-mid"><span class="cat cv">VUELO</span><div class="blk-title">✈️ Llegada BER</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Berlin Brandenburg Airport</div><div class="loc-a">📍 Willy-Brandt-Platz, 12529 Schönefeld · Terminal 1</div></div>
+<div class="tl"><div class="tl-hdr">📍 Aeropuerto → Hotel</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-line"></div><div class="tl-c"><b>🚕 Uber XL ⭐ Recomendado</b><p>T1 nivel 0, carteles "Ride Services". ~40 min. 30-40€. 5 pax + maletas en 1 vehículo.</p></div></div>
+  <div class="tl-step"><div class="tl-dot df"></div><div class="tl-c"><b>🚇 Alt: FEX + U-Bahn — 45 min, 3.80€/pax</b><p>FEX → Hauptbahnhof (28 min). U5 dir. Alexanderplatz → Brandenburger Tor. Trasbordo U6 dir. Alt-Mariendorf.</p><div class="exit">🔵 U Kochstraße — salida Friedrichstraße. 200m sur: hotel Charlie Living, izda.</div></div></div>
+</div></div>
+<div class="teen"><p><b>Dato BER:</b> El aeropuerto se inauguró 9 años tarde por fallos anti-incendios. El FEX pasa POR DEBAJO de la pista. Intenta oír un avión despegar encima tuyo.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Berlin+Brandenburg+Airport+BER&destination=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&travelmode=driving" target="_blank">🗺️ Navegar: BER → Hotel</a>
+</div></article>
+
+<article class="blk" id="d11"><div class="blk-hd" onclick="tog('d11')"><div class="blk-time">20:15</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">🏨 Check-in + REWE</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo">Recepción 24h. Dejar maletas, refrescarse.</div>
+<div class="nfo"><strong>REWE City</strong> (Friedrichstraße 56, 10117 · 5 min a pie, hasta 22:00). Agua, fruta, desayuno.</div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=REWE+City+Friedrichstrasse+56+Berlin&travelmode=walking" target="_blank">📍 Hotel → REWE</a>
+<div class="buf">⏱️ +15 min buffer</div>
+</div></article>
+
+<article class="blk food" id="d12"><div class="blk-hd" onclick="tog('d12')"><div class="blk-time">20:45</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">🍽️ Katz Orange</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Katz Orange</div><div class="loc-a">📍 Bergstraße 22, 10115 Berlin-Mitte</div><div class="loc-d">Pulled pork 12h · Ensaladas temporada · 25-45€/pax · <b>RESERVAR</b></div></div>
+<div class="tl"><div class="tl-hdr">📍 Hotel → Restaurante</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>👟 A pie — 45 min (3.3 km) Ruta panorámica nocturna</b><p>Norte Friedrichstraße → cruzar <b>Unter den Linden</b> (Puerta Brandeburgo iluminada izda.) → norte → pasar Oranienburger Tor → dcha. <b>Oranienburger Str.</b> (cúpula dorada Sinagoga) → izda. Bergstraße 22. Portón madera → patio interior.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 U6 — 12 min ⭐ Recomendado</b><p>U6 Kochstraße dir. Alt-Tegel → Oranienburger Tor (4 par.).</p><div class="exit">🔵 Salida Friedrichstraße Norte. 5 min: sur Friedrichstr., dcha. Oranienburger, izda. Bergstraße 22.</div></div></div>
+</div></div>
+<div class="teen"><p>Busca la <b>puerta secreta</b>: parece un portón de garaje. Sin cartel. Empuja la madera, cruza el pasillo oscuro. El edificio era una cervecería del siglo XIX.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=Katz+Orange+Bergstrasse+22+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Hotel → Katz Orange</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk" id="d13"><div class="blk-hd" onclick="tog('d13')"><div class="blk-time">22:30</div><div class="blk-mid"><span class="cat cp">MONUMENTO</span><div class="blk-title">🌙 Brandenburger Tor + Reichstag</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="tl"><div class="tl-hdr">📍 Katz Orange → Puerta</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 20 min (1.5 km)</b><p>Volver Oranienburger Str. sur → Friedrichstraße → cruzar <b>Unter den Linden</b> girar dcha. (oeste). Puerta iluminada al fondo. Continuar a Platz der Republik: Reichstag con cúpula encendida.</p></div></div>
+</div></div>
+<div class="teen"><p>Busca los <b>"Stolpersteine"</b> en Unter den Linden: placas de latón dorado en la acera con nombres de víctimas del Holocausto. En Berlín hay +9.000.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Katz+Orange+Berlin&destination=Brandenburg+Gate+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Katz → Brandenburger Tor</a>
+</div></article>
+
+<article class="blk" id="d14"><div class="blk-hd" onclick="tog('d14')"><div class="blk-time">23:15</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">🏨 Regreso hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="tl"><div class="tl-hdr">📍 Puerta → Hotel</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>👟 A pie — 17 min (1.3 km)</b><p>Sur Ebertstraße → pasar <b>Memorial Holocausto</b> (iluminado) → sur Wilhelmstraße → izda. Kochstraße → hotel.</p></div></div>
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-c"><b>🚕 Si agotados — 5 min, ~8€</b></div></div>
+</div></div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=Brandenburg+Gate+Berlin&destination=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&travelmode=walking" target="_blank">📍 Puerta → Hotel</a>
+</div></article>
+</div>
+
+<!-- ═══════════════════════════════ DÍA 2 ═══════════════════════════════ -->
+<div class="panel" id="p1">
+<div class="dhdr"><div class="tag">Sábado 25 Abril · Día 2</div><h2>Tecnología, Historia + Vibe</h2><div class="obj">Mañana WOW · Tarde VIBE · Noche SUNSET</div></div>
+<div class="stbl"><table>
+<tr><th>Hora</th><th>Actividad</th><th>Cómo</th><th>€</th></tr>
+<tr><td>08:30</td><td>Desayuno</td><td class="t">—</td><td class="c">~8€/p</td></tr>
+<tr><td>09:30</td><td>Cúpula Reichstag</td><td class="t">👟 22 min</td><td class="c">Gratis</td></tr>
+<tr><td>10:45</td><td>Memorial Holocausto</td><td class="t">👟 5 min</td><td class="c">Gratis</td></tr>
+<tr><td>11:15</td><td>Spy Museum</td><td class="t">👟 8 min</td><td class="c">~11€/p</td></tr>
+<tr><td>13:15</td><td>🍽️ Markthalle Neun</td><td class="t">🚇 20 min</td><td class="c">~12€/p</td></tr>
+<tr><td>14:30</td><td>East Side Gallery</td><td class="t">👟 20 min</td><td class="c">Gratis</td></tr>
+<tr><td>15:30</td><td>Computerspielemuseum</td><td class="t">👟 15 min</td><td class="c">~9€/p</td></tr>
+<tr><td>17:15</td><td>Boxhagener Platz</td><td class="t">👟 12 min</td><td class="c">—</td></tr>
+<tr><td>18:00</td><td>🍽️🌅 Klunkerkranich</td><td class="t">🚕 15 min</td><td class="c">~15€/p</td></tr>
+<tr><td>22:00</td><td>Regreso hotel</td><td class="t">🚕 15 min</td><td class="c">~14€</td></tr>
+</table></div>
+
+<article class="blk" id="d20"><div class="blk-hd" onclick="tog('d20')"><div class="blk-time">08:30</div><div class="blk-mid"><span class="cat cc">COMIDA</span><div class="blk-title">☕ Desayuno</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>A:</strong> Restaurante hotel (buffet). <strong>B:</strong> The Barn (Auguststraße 58, 10119, 18 min a pie). <strong>C:</strong> Apartamento.</div>
+</div></article>
+
+<article class="blk" id="d21"><div class="blk-hd" onclick="tog('d21')"><div class="blk-time">09:30</div><div class="blk-mid"><span class="cat cm">VISITA</span><div class="blk-title">🏛️ Cúpula Reichstag</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="alert" style="margin:14px 0">⚠️ RESERVAR GRATIS en bundestag.de · 2-3 semanas antes · Franja 09:30</div>
+<div class="loc"><div class="loc-n">Reichstag</div><div class="loc-a">📍 Platz der Republik 1, 11011 Berlin</div><div class="loc-d">Audioguía incluida. Cúpula cristal Foster, 360°. 45-60 min.</div></div>
+<div class="tl"><div class="tl-hdr">📍 Hotel → Reichstag</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 22 min (1.8 km)</b><p>Norte Friedrichstraße → cruzar Unter den Linden → norte Ebertstraße → izda. Scheidemannstraße. Entrada lado oeste.</p></div></div>
+</div></div>
+<div class="teen"><p>La cúpula permite mirar <b>ABAJO</b> y ver a los políticos trabajar. El pueblo encima del poder. Busca el <b>cono de espejos central</b> que redirige luz solar a la sala de plenos.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=Reichstag+Building+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Hotel → Reichstag</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk" id="d22"><div class="blk-hd" onclick="tog('d22')"><div class="blk-time">10:45</div><div class="blk-mid"><span class="cat cm">MONUMENTO</span><div class="blk-title">◼️ Memorial Holocausto</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Cora-Berliner-Straße 1, 10117 Berlin.</strong> 2.711 bloques hormigón. Sin guía, sin carteles. Los bloques crecen hasta tapar el cielo. 15-20 min.</div>
+<div class="tl"><div class="tl-hdr">📍 Reichstag → Memorial</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 5 min</b><p>Sur Ebertstraße. Memorial a la dcha.</p></div></div></div></div>
+<div class="teen"><p><b>Misión silenciosa:</b> Camina solo al centro. Los bloques empiezan bajos y desapareces. Cuando no ves a nadie, para y escucha. Ese es el punto.</p></div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=Reichstag+Building+Berlin&destination=Memorial+to+the+Murdered+Jews+of+Europe+Berlin&travelmode=walking" target="_blank">📍 Reichstag → Memorial</a>
+<div class="buf">⏱️ +10 min</div>
+</div></article>
+
+<article class="blk" id="d23"><div class="blk-hd" onclick="tog('d23')"><div class="blk-time">11:15</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">🕵️ Spy Museum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">German Spy Museum</div><div class="loc-a">📍 Leipziger Platz 9, 10117 Berlin-Mitte</div><div class="loc-d">~15€ adultos · ~8€ niños · Hora óptima: 11:00-11:30 · 1.5-2h</div></div>
+<div class="tl"><div class="tl-hdr">📍 Memorial → Spy Museum</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 8 min</b><p>Este Hannah-Arendt-Str. → cruzar Wilhelmstraße → Leipziger Platz 9, junto Mall of Berlin.</p></div></div></div></div>
+<div class="nfo">Laser maze cronometrado, interrogatorios, gadgets CIA/KGB, Enigma, detector mentiras.</div>
+<div class="teen"><p><b>RETO:</b> Láser maze con ranking. Récord: ~45 seg. Objetivo: bajar de 1 min. Los adultos fallarán. Será gracioso.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Memorial+to+the+Murdered+Jews+of+Europe+Berlin&destination=German+Spy+Museum+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Memorial → Spy Museum</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk food" id="d24"><div class="blk-hd" onclick="tog('d24')"><div class="blk-time">13:15</div><div class="blk-mid"><span class="cat cc">MERCADO</span><div class="blk-title">🍽️ Markthalle Neun</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Markthalle Neun</div><div class="loc-a">📍 Eisenbahnstraße 42/43, 10997 Berlin-Kreuzberg</div><div class="loc-d">Sáb Wochenmarkt 10-18h · 8-15€/pax · Cada uno elige</div></div>
+<div class="tl"><div class="tl-hdr">📍 Spy Museum → Markthalle</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-line"></div><div class="tl-c"><b>🚇 Metro — 20 min ⭐</b><p>5 min sur a U Kochstraße. U6 dir. Alt-Mariendorf → Hallesches Tor (2 par.). U1 dir. Warschauer → Görlitzer Bhf (3 par.).</p><div class="exit">🔵 Görlitzer Bhf — salida Wiener Str. 8 min sur, dcha. Eisenbahnstr.</div></div></div>
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-c"><b>🚕 Alt: Uber XL — 12 min, ~10-12€</b><p>Si el grupo tiene hambre.</p></div></div>
+</div></div>
+<div class="teen"><p>La <b>U1 circula ELEVADA</b> como metro aéreo. Ves patios interiores con grafitis. La U1 se inauguró en 1902.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=German+Spy+Museum+Berlin&destination=Markthalle+Neun+Berlin&travelmode=transit" target="_blank">🗺️ Navegar: Spy Museum → Markthalle</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk" id="d25"><div class="blk-hd" onclick="tog('d25')"><div class="blk-time">14:30</div><div class="blk-mid"><span class="cat cp">STREET ART</span><div class="blk-title">🎨 East Side Gallery</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Mühlenstraße 3-100, 10243 Berlin.</strong> 1.3 km Muro pintado. Gratis. 30-45 min a ritmo libre.</div>
+<div class="tl"><div class="tl-hdr">📍 Markthalle → East Side</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 20 min (1.5 km)</b><p>Norte Eisenbahnstr. → dcha. Skalitzer Str. → cruzar <b>Oberbaumbrücke</b> (puente rojo torres neogóticas). Gallery empieza a la dcha. por Mühlenstraße.</p></div></div></div></div>
+<div class="teen"><p>Encuentra 3 murales: (1) <b>Beso Brezhnev-Honecker</b>. (2) <b>Trabant rompiendo el muro</b>. (3) <b>"It Happened in November"</b>. Pintados en 1990 sobre el LADO ESTE.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Markthalle+Neun+Berlin&destination=East+Side+Gallery+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Markthalle → East Side</a>
+</div></article>
+
+<article class="blk" id="d26"><div class="blk-hd" onclick="tog('d26')"><div class="blk-time">15:30</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">🎮 Computerspielemuseum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Computerspielemuseum</div><div class="loc-a">📍 Karl-Marx-Allee 93a, 10243 Berlin-Friedrichshain</div><div class="loc-d">~11€/7€ · Después 15:00 menos gente · Mín 1.5h · Fachada con mando gigante</div></div>
+<div class="tl"><div class="tl-hdr">📍 East Side → Museo</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>👟 A pie — 15 min (1.1 km)</b><p>Mühlenstr. norte → Ostbahnhof → cruzar vías → norte Str. der Pariser Kommune → Karl-Marx-Allee 93a izda.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Alt: 8 min si estáis en Ostbahnhof</b><p>S-Bahn 1 par. Alexanderplatz, U5 1 par. Weberwiese.</p><div class="exit">🔵 Salida Karl-Marx-Allee. 3 min caminando.</div></div></div>
+</div></div>
+<div class="teen"><p><b>TOP 3:</b> (1) <b>PainStation</b> — Pong donde el perdedor recibe calor/descarga. (2) <b>Arcade 1980</b> — Pac-Man, Space Invaders en hardware original. (3) <b>VR Retro</b> — casco de 1995, 3 kg.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=East+Side+Gallery+Berlin&destination=Computerspielemuseum+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: East Side → Computerspielemuseum</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk" id="d27"><div class="blk-hd" onclick="tog('d27')"><div class="blk-time">17:15</div><div class="blk-mid"><span class="cat cp">TIEMPO LIBRE</span><div class="blk-title">🛹 Boxhagener Platz — Libre</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="tl"><div class="tl-hdr">📍 Museo → Boxi</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 12 min (900m)</b><p>Este Karl-Marx-Allee → dcha. Warschauer Str. → 2ª izda. Gryphiusstr.</p></div></div></div></div>
+<div class="nfo">30-45 min. <strong>Adultos:</strong> Café Faro o Silo Coffee. <strong>Teen:</strong> exploración autónoma.</div>
+<div class="teen"><p><b>MISIÓN AUTÓNOMA 30 min:</b> (1) Encuentra "Bis aufs Messer Records" en Simon-Dach-Str. (2) Helado Cuore di Vetro. (3) 3 grafitis Banksy-style. <b>Reagrupamiento 18:00 esquina NO.</b></p></div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=Computerspielemuseum+Berlin&destination=Boxhagener+Platz+Berlin&travelmode=walking" target="_blank">📍 Museo → Boxi</a>
+</div></article>
+
+<article class="blk food" id="d28"><div class="blk-hd" onclick="tog('d28')"><div class="blk-time">18:00</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">🍽️🌅 Klunkerkranich</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Klunkerkranich</div><div class="loc-a">📍 Karl-Marx-Straße 66, 12043 Berlin-Neukölln — P5 parking</div><div class="loc-d">Entrada 3-5€ · Sunset ~20:00 · DJ sáb · Pizzas, bowls · 10-20€/p</div></div>
+<div class="tl"><div class="tl-hdr">📍 Boxi → Klunkerkranich</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-line"></div><div class="tl-c"><b>🚕 Uber XL — 15 min, ~12-15€ ⭐</b><p>Metro: 28 min con trasbordo. Uber gana.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Alt: U5+U7 — 28 min</b><p>Frankfurter Tor (U5) → Alexanderplatz. U7 dir. Rudow.</p><div class="exit">🔵 Rathaus Neukölln — salida Karl-Marx-Str. Neukölln Arcaden 2 min. Subir P5.</div></div></div>
+</div></div>
+<div class="nfo"><strong>CÓMO ENTRAR:</strong> Centro comercial Neukölln Arcaden. Parking P5. Puerta que parece no llevar a nada → empujar → última rampa a pie. <b>Llegar 18:30-19:00.</b></div>
+<div class="teen"><p>Sitio <b>SECRETO</b>. Subes por un parking y llegas a un jardín con DJ y skyline de toda Berlín. Busca la Fernsehturm: 368 m.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Boxhagener+Platz+Berlin&destination=Klunkerkranich+Berlin&travelmode=driving" target="_blank">🗺️ Navegar: Boxi → Klunkerkranich</a>
+</div></article>
+
+<article class="blk" id="d29"><div class="blk-hd" onclick="tog('d29')"><div class="blk-time">22:00</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">🏨 Regreso hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="tl"><div class="tl-hdr">📍 Klunkerkranich → Hotel</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-line"></div><div class="tl-c"><b>🚕 Uber XL — 15-18 min, ~12-15€ ⭐ Tras día largo</b></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Alt: U7+U6 — 25 min</b><p>U7 Rathaus Neukölln dir. Rathaus Spandau → Mehringdamm. U6 dir. Alt-Tegel → Kochstraße (1 par.).</p></div></div>
+</div></div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=Klunkerkranich+Berlin&destination=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&travelmode=driving" target="_blank">📍 Klunkerkranich → Hotel</a>
+</div></article>
+</div>
+
+<!-- ═══════════════════════════════ DÍA 3 ═══════════════════════════════ -->
+<div class="panel" id="p2">
+<div class="dhdr"><div class="tag">Domingo 26 Abril · Día 3</div><h2>Ciencia, Río + Noche Berlín</h2><div class="obj">Mañana museo · Tarde río · Noche Fernsehturm + cena despedida</div></div>
+
+<div class="stbl"><table>
+<tr><th>Hora</th><th>Actividad</th><th>Cómo</th><th>€</th></tr>
+<tr><td>08:30</td><td>Desayuno + maletas</td><td class="t">—</td><td class="c">—</td></tr>
+<tr><td>10:00</td><td>Technikmuseum + Spectrum</td><td class="t">👟 15 min</td><td class="c">Gratis &lt;18</td></tr>
+<tr><td>12:15</td><td>🍽️ Burgermeister</td><td class="t">🚇 U1 12 min</td><td class="c">~12€/p</td></tr>
+<tr><td>13:15</td><td>DDR Museum</td><td class="t">🚕 10 min</td><td class="c">~10€/p</td></tr>
+<tr><td>14:30</td><td>🛥️ Crucero Spree (1h)</td><td class="t">👟 3 min</td><td class="c">~18€/10€</td></tr>
+<tr><td>15:30</td><td>Hackescher Markt</td><td class="t">👟 8 min</td><td class="c">—</td></tr>
+<tr><td>16:15</td><td>Fernsehturm (TV Tower)</td><td class="t">👟 8 min</td><td class="c">~27€/p</td></tr>
+<tr><td>17:30</td><td>Tiempo libre / hotel</td><td class="t">🚇 12 min</td><td class="c">—</td></tr>
+<tr><td>19:30</td><td>🍽️ Cena despedida</td><td class="t">👟 5 min</td><td class="c">25-40€/p</td></tr>
+<tr><td>21:30</td><td>Regreso hotel</td><td class="t">👟 5 min</td><td class="c">—</td></tr>
+</table></div>
+
+<article class="blk" id="d30"><div class="blk-hd" onclick="tog('d30')"><div class="blk-time">08:30</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">☕ Desayuno + Check-out</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo">Desayuno en apartamento u restaurante del hotel. Hacer maletas. <strong>Dejar equipaje en recepción</strong> (gratis).</div>
+</div></article>
+
+<article class="blk" id="d31"><div class="blk-hd" onclick="tog('d31')"><div class="blk-time">10:00</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">🔧 Deutsches Technikmuseum + Spectrum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Deutsches Technikmuseum + Science Center Spectrum</div><div class="loc-a">📍 Trebbiner Straße 9, 10963 Berlin-Kreuzberg</div><div class="loc-d">Menores 18 GRATIS · Adultos ~8€ · Dom 10:00-18:00 · 2h · Avión real en el tejado</div></div>
+<div class="tl"><div class="tl-hdr">📍 Hotel → Technikmuseum</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>👟 A pie — 15 min (1.2 km) ⭐</b><p>Oeste Schützenstraße → sur Wilhelmstraße → dcha. Stresemannstraße → dcha. Möckernstraße → Trebbiner Str. 9. Verás el avión en el tejado.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Alt: U-Bahn — 8 min</b><p>U6 Kochstraße dir. Alt-Mariendorf → Gleisdreieck (2 par.).</p><div class="exit">🔵 Gleisdreieck — salida Möckernstraße. 4 min sur hasta entrada museo.</div></div></div>
+</div></div>
+<div class="nfo"><strong>Museo:</strong> 40 aviones reales (incluido el Rosinenbomber del Puente Aéreo), locomotoras donde puedes entrar, barcos, historia de la informática. <strong>Spectrum:</strong> 4 plantas, +150 experimentos interactivos donde todo se toca — óptica, magnetismo, sonido, gravedad.</div>
+<div class="teen"><p><b>TOP 3 Spectrum:</b> (1) <b>Casa de la bruja</b> — distorsiona tu sentido del equilibrio. (2) <b>Cuerdas de gravedad</b> — cuelgas y sientes las fuerzas. (3) <b>Péndulo de Foucault</b> — demuestra que la Tierra gira. En el museo: sube a las locomotoras y mira el avión desde la terraza.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=Deutsches+Technikmuseum+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Hotel → Technikmuseum</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk food" id="d33"><div class="blk-hd" onclick="tog('d33')"><div class="blk-time">12:15</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">🍽️ Burgermeister</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Burgermeister</div><div class="loc-a">📍 Oberbaumstraße 8, 10997 Berlin — bajo U-Bahn Schlesisches Tor</div><div class="loc-d">Meisterburger · 8-14€/pax · Cola 10-15 min</div></div>
+<div class="tl"><div class="tl-hdr">📍 Technikmuseum → Burgermeister</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 U1 directa — 12 min ⭐</b><p>U1/U2 Gleisdreieck dir. Warschauer Str. → Schlesisches Tor (5 par.).</p><div class="exit">🔵 Schlesisches Tor — salida Oberbaumstr. Burgermeister DEBAJO de las vías. Cola y olor.</div></div></div></div></div>
+<div class="teen"><p><b>Baño público reconvertido</b> de ~1900. Azulejos originales, forma octogonal. Reto: cuenta trenes U1 por encima (media: 1 cada 3-4 min).</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Deutsches+Technikmuseum+Berlin&destination=Burgermeister+Schlesisches+Tor+Berlin&travelmode=transit" target="_blank">🗺️ Navegar: Technikmuseum → Burgermeister</a>
+<div class="buf">⏱️ +10 min</div>
+</div></article>
+
+<article class="blk" id="d34"><div class="blk-hd" onclick="tog('d34')"><div class="blk-time">13:15</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">🏘️ DDR Museum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">DDR Museum</div><div class="loc-a">📍 Karl-Liebknecht-Straße 1, 10178 Berlin — junto al río Spree</div><div class="loc-d">~14€/7€ · 1-1.5h · Todo se toca</div></div>
+<div class="tl"><div class="tl-hdr">📍 Burgermeister → DDR Museum</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-line"></div><div class="tl-c"><b>🚕 Uber XL — 12 min, ~10€ ⭐ Ahorro tiempo domingo</b></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Alt: U1+S — 22 min</b><p>U1 Schlesisches Tor dir. Uhlandstr. → Warschauer Str. S-Bahn dir. Westkreuz.</p><div class="exit">🔵 Alexanderplatz — salida Karl-Liebknecht-Str. DDR Museum junto río, frente Catedral.</div></div></div>
+</div></div>
+<div class="teen"><p><b>TOP 3:</b> (1) <b>Simulador Trabant</b> — 26 CV, ir a 80 km/h es aventura. (2) <b>Armario cocina</b> — todo estatal, todo igual. (3) <b>Auriculares Stasi</b> — interceptación telefónica real.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Burgermeister+Schlesisches+Tor+Berlin&destination=DDR+Museum+Berlin&travelmode=driving" target="_blank">🗺️ Navegar: Burgermeister → DDR Museum</a>
+<div class="buf">⏱️ +15 min</div>
+</div></article>
+
+<article class="blk" id="d34b"><div class="blk-hd" onclick="tog('d34b')"><div class="blk-time">14:30</div><div class="blk-mid"><span class="cat cp">AVENTURA</span><div class="blk-title">🛥️ Crucero por el Spree (1h)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Embarcadero Nikolaiviertel / Berliner Dom</div><div class="loc-a">📍 Nikolaikirchplatz, 10178 Berlin (junto DDR Museum)</div><div class="loc-d">~18-22€ adultos · ~10-12€ niños · 1h · Salidas cada 30 min</div></div>
+<div class="tl"><div class="tl-hdr">📍 DDR Museum → Embarcadero</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 3 min ⭐</b><p>Al salir del DDR Museum, girar dcha. por la ribera del Spree. Embarcadero a 200m junto a la Catedral de Berlín.</p></div></div>
+</div></div>
+<div class="nfo"><strong>Ruta del crucero (1h):</strong> Isla de los Museos → Catedral → Reichstag → Haus der Kulturen der Welt → Hauptbahnhof → vuelta. Audio en alemán/inglés.</div>
+<div class="nfo"><strong>Compañías:</strong> Stern und Kreisschiffahrt, Reederei Riedel. Comprar en el embarcadero o por web.</div>
+<div class="nfo"><strong>Desembarco:</strong> Mismo punto de embarque (Nikolaiviertel). Desde ahí, 8 min andando a Hackescher Markt.</div>
+<div class="teen"><p><b>Vista acuática:</b> Ver el Reichstag y la Catedral desde abajo, pasar por debajo de <b>11 puentes</b>, y fotos desde el agua que nadie más del grupo tendrá. Busca la <b>Isla de los Museos</b>: 5 museos en una isla en medio del río.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=DDR+Museum+Berlin&destination=Schiffbauerdamm+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: DDR Museum → Embarcadero</a>
+<div class="buf">⏱️ +10 min</div>
+</div></article>
+
+<article class="blk" id="d35"><div class="blk-hd" onclick="tog('d35')"><div class="blk-time">15:30</div><div class="blk-mid"><span class="cat cs">COMPRAS</span><div class="blk-title">🛍️ Hackescher Markt</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Rosenthaler Str. 40/41, 10178 Berlin.</strong> 8 patios conectados. Boutiques, galerías. <strong>Ampelmann Shop</strong> (patio 5). 45 min.</div>
+<div class="tl"><div class="tl-hdr">📍 Desembarco → Hackescher</div><div class="tl-body"><div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 8 min (600m)</b><p>Norte desde embarcadero por Spandauer Str. → Hackescher Markt.</p></div></div></div></div>
+<div class="teen"><p>Atraviesa <b>los 8 patios</b>. 1º: azulejos Art Nouveau 1906. Último: cine indie. Busca <b>Ampelmann</b>: muñeco semáforo Berlín Este con sombrero.</p></div>
+<a class="bmap sm" href="https://www.google.com/maps/dir/?api=1&origin=DDR+Museum+Berlin&destination=Hackescher+Markt+Berlin&travelmode=walking" target="_blank">📍 DDR → Hackescher</a>
+</div></article>
+
+<article class="blk" id="d36"><div class="blk-hd" onclick="tog('d36')"><div class="blk-time">16:15</div><div class="blk-mid"><span class="cat cm">VISITA</span><div class="blk-title">📡 Fernsehturm (TV Tower)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Berliner Fernsehturm</div><div class="loc-a">📍 Panoramastraße 1a, 10178 Berlin-Mitte</div><div class="loc-d">368m — el edificio más alto de Alemania · ~27€ Fast View · Dom 9-24h · 45 min arriba</div></div>
+<div class="tl"><div class="tl-hdr">📍 Hackescher → Fernsehturm</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 8 min (600m)</b><p>Este por Karl-Liebknecht-Str. hasta Alexanderplatz. Torre visible desde cualquier punto.</p></div></div>
+</div></div>
+<div class="nfo"><strong>Fast View Ticket (online):</strong> Sin cola. Ascensor: 40 segundos hasta 203m. Plataforma panorámica 360° + Bar Sphere. Vistas de toda la ciudad: Brandenburger Tor, Isla Museos, Tiergarten, Catedral.</div>
+<div class="teen"><p>203 metros. 40 segundos en ascensor. <b>60 ventanas</b> con mapas de cada vista. El bar más alto de Berlín está aquí arriba. Dato: en días soleados la esfera refleja una <b>cruz de luz</b> gigante — los berlineses la llamaban "la venganza del Papa" porque la RDA era oficialmente atea.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Hackescher+Markt+Berlin&destination=Berliner+Fernsehturm&travelmode=walking" target="_blank">🗺️ Navegar: Hackescher → Fernsehturm</a>
+<div class="buf">⏱️ +10 min</div>
+</div></article>
+
+<article class="blk" id="d36b"><div class="blk-hd" onclick="tog('d36b')"><div class="blk-time">17:30</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">🏨 Tiempo libre / Descanso hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="tl"><div class="tl-hdr">📍 Fernsehturm → Hotel</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>🚇 Metro — 12 min</b><p>U2 Alexanderplatz dir. Ruhleben → Stadtmitte (3 par.). 5 min andando sur hasta hotel.</p></div></div>
+</div></div>
+<div class="nfo">Descansar, ducha, cambio de ropa para la cena. El teen puede usar la cocina o bajar a restaurante del hotel.</div>
+</div></article>
+
+<article class="blk food" id="d36c"><div class="blk-hd" onclick="tog('d36c')"><div class="blk-time">19:30</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">🍽️ Cena de Despedida</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Lutter &amp; Wegner (Gendarmenmarkt)</div><div class="loc-a">📍 Charlottenstraße 56, 10117 Berlin-Mitte</div><div class="loc-d">Cocina berlinesa clásica · Wiener Schnitzel · Terraza en la plaza más bonita · 25-40€/pax · RESERVAR</div></div>
+<div class="tl"><div class="tl-hdr">📍 Hotel → Restaurante</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>👟 A pie — 5 min (400m) ⭐</b><p>Norte Schützenstraße → dcha. Charlottenstraße → Gendarmenmarkt → Gendarmenmarkt. Restaurante esquina suroeste de la plaza.</p></div></div>
+</div></div>
+<div class="nfo"><strong>Por qué aquí:</strong> La Gendarmenmarkt es la plaza más elegante de Berlín — dos catedrales gemelas (Französischer Dom y Deutscher Dom) + el Konzerthaus iluminado de noche. Lutter &amp; Wegner es un clásico berlinés desde 1811. Terraza con vistas a la plaza.</div>
+<div class="nfo"><strong>Carta:</strong> Wiener Schnitzel (la especialidad), codillo berlinés, ensaladas generosas, postres caseros. Carta de vinos amplia. Kids menu disponible.</div>
+<div class="teen"><p>La plaza Gendarmenmarkt de noche es <b>cinematográfica</b>. Las dos catedrales iluminadas parecen gemelas pero una es francesa y la otra alemana — construidas para las dos comunidades que convivían aquí en el siglo XVIII.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=Lutter+und+Wegner+Gendarmenmarkt+Berlin&travelmode=walking" target="_blank">🗺️ Navegar: Hotel → Lutter &amp; Wegner</a>
+<div class="buf">⏱️ Sobremesa tranquila</div>
+</div></article>
+
+<article class="blk" id="d36d"><div class="blk-hd" onclick="tog('d36d')"><div class="blk-time">21:30</div><div class="blk-mid"><span class="cat ch">HOTEL</span><div class="blk-title">🏨 Regreso + preparar maletas</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo">👟 5 min de vuelta al hotel desde Gendarmenmarkt. <strong>Preparar maletas para mañana.</strong> Vuelo lunes 11:00 → salida hotel 08:00.</div>
+</div></article>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════ DÍA 4 ═══════════════════════════════ -->
+<div class="panel" id="p3">
+<div class="dhdr"><div class="tag">Lunes 27 Abril · Día 4</div><h2>✈️ Despedida + Vuelo</h2><div class="obj">Desayuno tranquilo · Check-out · Vuelo 11:00</div></div>
+<div class="alert">⚠️ VUELO 11:00 → Salir hotel 08:00 MÁXIMO</div>
+<div class="stbl"><table>
+<tr><th>Hora</th><th>Actividad</th><th>Cómo</th><th>€</th></tr>
+<tr><td>07:00</td><td>Despertador</td><td class="t">—</td><td class="c">—</td></tr>
+<tr><td>07:15</td><td>Desayuno</td><td class="t">restaurante del hotel / apart.</td><td class="c">~8€/p</td></tr>
+<tr><td>07:50</td><td>Check-out + maletas</td><td class="t">—</td><td class="c">—</td></tr>
+<tr><td>08:00</td><td>🛫 Hotel → BER</td><td class="t">🚇 FEX 45 min</td><td class="c">3.80€/p</td></tr>
+<tr><td>08:45</td><td>Llegada BER T1</td><td class="t">—</td><td class="c">—</td></tr>
+<tr><td>11:00</td><td>✈️ Vuelo BER → BCN</td><td class="t">—</td><td class="c">—</td></tr>
+</table></div>
+
+<article class="blk open" id="d40"><div class="blk-hd" onclick="tog('d40')"><div class="blk-time">07:15</div><div class="blk-mid"><span class="cat cc">COMIDA</span><div class="blk-title">☕ Último desayuno</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>restaurante del hotel</strong> abre a las 7:00. Desayuno rápido pero tranquilo. Alternativa: lo que quede en la nevera del apartamento.</div>
+<div class="nfo"><strong>07:50:</strong> Check-out. Dejar llaves en recepción. Maletas listas.</div>
+</div></article>
+
+<article class="blk" id="d41" style="box-shadow:var(--glow-accent),inset 0 0 0 2px var(--accent)"><div class="blk-hd" onclick="tog('d41')" style="background:var(--accent-glow)"><div class="blk-time" style="color:var(--accent);background:var(--accent-glow)">08:00</div><div class="blk-mid"><span class="cat cv">VUELO</span><div class="blk-title">🛫 Hotel → BER</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="stbl" style="margin:14px 0"><table>
+<tr><th>Vuelo</th><th>Salir hotel</th><th>Llegada BER</th><th>Margen</th></tr>
+<tr><td><b>11:00</b></td><td><b>08:00</b></td><td>~08:45</td><td class="c">2h 15min</td></tr>
+</table></div>
+<div class="nfo"><strong>Cálculo:</strong> 5 min U6 a Friedrichstraße + 22 min FEX + 10 min buffer + 5 min al terminal = 42 min. Margen en BER: 2h 15 min.</div>
+<div class="tl"><div class="tl-hdr">📍 Hotel → BER</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot df"></div><div class="tl-line"></div><div class="tl-c"><b>🚇 FEX — fiable, económico ⭐</b><p>U6 Kochstraße → Friedrichstraße (2 par.). FEX a BER: cada 30 min (~:02 y ~:32). <b>22 min directo.</b> 3.80€/pax.</p><p><b>Total puerta a terminal: ~45 min.</b></p></div></div>
+  <div class="tl-step"><div class="tl-dot du"></div><div class="tl-c"><b>🚕 Alt: Uber XL — 40-50 min, ~35-40€</b><p>Cómodo con maletas. Consultar Maps para obras en A113.</p></div></div>
+</div></div>
+<div class="nfo"><strong>En BER:</strong> Terminal 1. Facturación 2h antes. Equipaje mano: directo seguridad. Control pasaportes: NO (vuelo intra-Schengen).</div>
+<div class="teen"><p><b>Última misión:</b> Terminal 1 BER: instalación de luz en el techo. Paneles LED que cambian color según la hora. Diseño de <b>Olafur Eliasson</b>.</p></div>
+<a class="bmap" href="https://www.google.com/maps/dir/?api=1&origin=Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin&destination=Berlin+Brandenburg+Airport+BER&travelmode=transit" target="_blank">🗺️ Navegar: Hotel → BER</a>
+</div></article>
+</div>
+
+<!-- ═══════════════════════════════ PINS ═══════════════════════════════ -->
+<div class="panel" id="p6">
+<div class="dhdr"><div class="tag">Mapa Maestro</div><h2>📍 Pins + Kit Supervivencia</h2><div class="obj">Toca cada pin para abrirlo en Maps</div></div>
+
+<div class="pins">
+<div class="pin-cat">🏨 Alojamiento</div>
+<a class="pin" href="https://www.google.com/maps/search/Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin" target="_blank"><span class="pn">Mercure Hotel & Residenz Checkpoint Charlie</span><span class="pa">Schützenstraße 11, 10117 Berlin · Base</span></a>
+
+<div class="pin-cat">🍽️ Restaurantes</div>
+<a class="pin" href="https://www.google.com/maps/search/Katz+Orange+Bergstrasse+22+Berlin" target="_blank"><span class="pn">Katz Orange</span><span class="pa">Bergstraße 22, 10115 · Vie cena · RESERVAR</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Klunkerkranich+Berlin" target="_blank"><span class="pn">Klunkerkranich</span><span class="pa">Karl-Marx-Str. 66, 12043 Neukölln · Sáb sunset</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Burgermeister+Schlesisches+Tor+Berlin" target="_blank"><span class="pn">Burgermeister</span><span class="pa">Oberbaumstr. 8, 10997 · Dom almuerzo</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Markthalle+Neun+Berlin" target="_blank"><span class="pn">Markthalle Neun</span><span class="pa">Eisenbahnstr. 42/43, 10997 · Sáb almuerzo</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Lutter+und+Wegner+Gendarmenmarkt+Berlin" target="_blank"><span class="pn">Lutter &amp; Wegner</span><span class="pa">Charlottenstr. 56, 10117 · Dom cena despedida</span></a>
+
+<div class="pin-cat">🏛️ Museos</div>
+<a class="pin" href="https://www.google.com/maps/search/Reichstag+Building+Berlin" target="_blank"><span class="pn">Reichstag (Cúpula)</span><span class="pa">Platz der Republik 1, 11011 · RESERVAR bundestag.de</span></a>
+<a class="pin" href="https://www.google.com/maps/search/German+Spy+Museum+Berlin" target="_blank"><span class="pn">Spy Museum</span><span class="pa">Leipziger Platz 9, 10117 · ~15€/8€</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Computerspielemuseum+Berlin" target="_blank"><span class="pn">Computerspielemuseum</span><span class="pa">Karl-Marx-Allee 93a, 10243 · ~11€/7€</span></a>
+<a class="pin" href="https://www.google.com/maps/search/DDR+Museum+Berlin" target="_blank"><span class="pn">DDR Museum</span><span class="pa">Karl-Liebknecht-Str. 1, 10178 · ~14€/7€</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Deutsches+Technikmuseum+Berlin" target="_blank"><span class="pn">Deutsches Technikmuseum + Spectrum</span><span class="pa">Trebbiner Str. 9, 10963 · Gratis &lt;18</span></a>
+
+<div class="pin-cat">📸 Monumentos</div>
+<a class="pin" href="https://www.google.com/maps/search/Brandenburg+Gate+Berlin" target="_blank"><span class="pn">Puerta de Brandeburgo</span><span class="pa">Pariser Platz, 10117 Berlin</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Memorial+to+the+Murdered+Jews+of+Europe+Berlin" target="_blank"><span class="pn">Memorial Holocausto</span><span class="pa">Gratis 24h</span></a>
+<a class="pin" href="https://www.google.com/maps/search/East+Side+Gallery+Berlin" target="_blank"><span class="pn">East Side Gallery</span><span class="pa">Mühlenstraße 3-100, 10243 · Gratis</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Oberbaumbrucke+Berlin" target="_blank"><span class="pn">Oberbaumbrücke</span><span class="pa">Oberbaumbrücke, 10243 Berlin</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Berliner+Fernsehturm" target="_blank"><span class="pn">Fernsehturm (TV Tower)</span><span class="pa">Panoramastr. 1a, 10178 · ~27€ Fast View</span></a>
+
+<div class="pin-cat">🚲 Aventura</div>
+<a class="pin" href="https://www.google.com/maps/search/Nikolaiviertel+Berlin+embarcadero" target="_blank"><span class="pn">Embarcadero Spree (Nikolaiviertel)</span><span class="pa">Nikolaikirchplatz, 10178 · Crucero 1h</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Boxhagener+Platz+Berlin" target="_blank"><span class="pn">Boxhagener Platz</span><span class="pa">Boxhagener Platz, 10245 · Libre teen</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Hackescher+Markt+Berlin" target="_blank"><span class="pn">Hackescher Markt</span><span class="pa">Rosenthaler Str. 40, 10178 · 8 patios</span></a>
+
+<div class="pin-cat">🚇 Estaciones clave</div>
+<a class="pin" href="https://www.google.com/maps/search/U+Kochstrasse+Berlin" target="_blank"><span class="pn">U Kochstraße (U6)</span><span class="pa">Friedrichstr. 51, 10117 · 4 min hotel</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Berlin+Friedrichstrasse+Station" target="_blank"><span class="pn">S+U Friedrichstraße</span><span class="pa">Friedrichstr. 142, 10117 · S-Bahn + U6 + FEX</span></a>
+<a class="pin" href="https://www.google.com/maps/search/Berlin+Hauptbahnhof" target="_blank"><span class="pn">Berlin Hauptbahnhof</span><span class="pa">Europaplatz 1, 10557 · FEX a BER</span></a>
+</div>
+
+<section class="kit">
+<h3>🛠️ Kit Supervivencia</h3>
+<ul>
+<li>📱 <b>Apps:</b> BVG Fahrinfo · Uber · <b>Bolt</b> (15% más barato) · Google Maps · DB Navigator</li>
+<li>🎫 <b>Transporte:</b> Billete diario ABC: 9.50€/pax. Niños 6-14: ~6.50€. Comprar sáb + dom.</li>
+<li>💰 <b>Presupuesto transporte 3 días:</b> Económica 80-100€ · Confort 140-180€ · Premium 200-250€</li>
+<li>📞 <b>Emergencias:</b> 112 (general) · 110 (policía) · BVG: +49 30 19449</li>
+<li>🚉 <b>Nodo crítico:</b> Friedrichstraße Station (trasbordo S-Bahn + U6 + conexión FEX)</li>
+</ul>
+</section>
+
+<section class="kit" style="margin-top:14px">
+<h3>🗺️ Rutas completas por día</h3>
+<ul>
+<li><a class="bmap" href="https://www.google.com/maps/dir/Berlin+Brandenburg+Airport/Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin/Katz+Orange+Berlin/Brandenburg+Gate" target="_blank" style="margin:8px 0">🗺️ Ruta Día 1: BER → Hotel → Katz Orange → Brandenburger Tor</a></li>
+<li><a class="bmap" href="https://www.google.com/maps/dir/Reichstag+Berlin/Memorial+to+the+Murdered+Jews+of+Europe/German+Spy+Museum+Berlin/Markthalle+Neun/East+Side+Gallery/Computerspielemuseum+Berlin/Klunkerkranich+Berlin" target="_blank" style="margin:8px 0">🗺️ Ruta Día 2: Reichstag → Memorial → Spy → Markthalle → East Side → Games → Klunkerkranich</a></li>
+<li><a class="bmap" href="https://www.google.com/maps/dir/Deutsches+Technikmuseum+Berlin/Burgermeister+Schlesisches+Tor/DDR+Museum+Berlin/Hackescher+Markt+Berlin/Berliner+Fernsehturm" target="_blank" style="margin:8px 0">🗺️ Ruta Día 3: Technikmuseum → Burgermeister → DDR → Crucero → Hackescher → Fernsehturm</a></li>
+<li><a class="bmap" href="https://www.google.com/maps/dir/Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin/Berlin+Brandenburg+Airport" target="_blank" style="margin:8px 0">🗺️ Ruta Día 4: Hotel → BER (vuelo 11:00)</a></li>
+</ul>
+</section>
+</div>
+
+<!-- ═══════════════════════════════ GUÍA DE SITIOS ═══════════════════════════════ -->
+<div class="panel" id="p5">
+<div class="dhdr"><div class="tag">Guía de Sitios</div><h2>📖 Qué hacer en cada lugar</h2><div class="obj">Descripciones, consejos prácticos y qué no perderse</div></div>
+
+<article class="blk food" id="g01"><div class="blk-hd" onclick="tog('g01')"><div class="blk-time">🍽️</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">Katz Orange</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Escondido detrás de un portón de madera sin cartel en la Bergstraße 22, Katz Orange es uno de esos secretos berlineses que los locales protegen. El restaurante ocupa una antigua cervecería del siglo XIX reconvertida en un espacio con patio interior lleno de hiedra, ladrillo visto y velas. La estrella de la carta es el pulled pork de <b>12 horas de cocción lenta</b> — carne que se deshace con el tenedor. Las ensaladas de temporada son generosas y los cócteles artesanales merecen la pena. En verano el patio es mágico; en invierno la sala interior tiene chimenea.</div>
+<div class="guide-tags"><span>SLOW FOOD</span><span>PATIO SECRETO</span><span>RESERVAR</span><span>25-45€/PAX</span></div>
+<div class="guide-tip"><b>Consejo:</b> Reservar por su web con 2-3 días de antelación. Pedir mesa en el patio si hace buen tiempo. La puerta de entrada parece un garaje — no te asustes, empuja la madera y sigue el pasillo.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Katz+Orange+Bergstrasse+22+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.katzorange.com/en/" target="_blank" style="background:var(--green)">🌐 Web · Reservar</a>
+</div></article>
+
+<article class="blk" id="g02"><div class="blk-hd" onclick="tog('g02')"><div class="blk-time">🏛️</div><div class="blk-mid"><span class="cat cm">VISITA</span><div class="blk-title">Cúpula del Reichstag</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">La cúpula de cristal del Reichstag, diseñada por <b>Norman Foster</b>, es una de las experiencias arquitectónicas más impresionantes de Europa — y es totalmente gratis. Subes por una rampa en espiral mientras una audioguía te cuenta la historia del edificio y del parlamento alemán. Lo genial del diseño: desde arriba puedes mirar <b>hacia abajo</b> y ver la sala de plenos donde trabajan los diputados. Es una metáfora física de la transparencia democrática — el pueblo literalmente encima del poder. La vista de 360° de Berlín desde la cima es espectacular, especialmente con la Puerta de Brandeburgo y el Tiergarten al alcance de la mano.</div>
+<div class="guide-tags"><span>GRATIS</span><span>RESERVAR ONLINE</span><span>45-60 MIN</span><span>AUDIOGUÍA INCLUIDA</span></div>
+<div class="guide-tip guide-warn"><b>Importante:</b> La reserva es OBLIGATORIA y gratuita en <b>bundestag.de</b>. Hay que hacerla con 2-3 semanas de antelación. Elegir franja de 09:30-10:00. Sin reserva no se entra. Llevar documento de identidad.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Reichstag+Building+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.bundestag.de/en/visittheBundestag/dome/registration-245686" target="_blank" style="background:var(--green)">🌐 Reservar cúpula</a>
+</div></article>
+
+<article class="blk" id="g03"><div class="blk-hd" onclick="tog('g03')"><div class="blk-time">◼️</div><div class="blk-mid"><span class="cat cm">MONUMENTO</span><div class="blk-title">Memorial del Holocausto</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">2.711 bloques de hormigón gris de diferentes alturas dispuestos en una cuadrícula sobre un terreno ondulado. No hay carteles, no hay guía, no hay instrucciones. Esa es la intención. Diseñado por <b>Peter Eisenman</b>, el memorial te invita a entrar caminando. Al principio los bloques te llegan por la rodilla. A medida que avanzas al centro, crecen hasta superar los 4 metros y el suelo baja — desapareces entre ellos, pierdes de vista a los demás, y el ruido de la ciudad se apaga. Es una experiencia más física que intelectual. Debajo hay un <b>centro de información subterráneo</b> (gratis) con nombres y historias de víctimas.</div>
+<div class="guide-tags"><span>GRATIS 24H</span><span>15-20 MIN EXTERIOR</span><span>CENTRO INFO 45 MIN</span><span>SIN CARTELES</span></div>
+<div class="guide-tip"><b>Consejo:</b> Caminar solo hacia el centro es la experiencia más potente. No correr, no gritar — es un lugar de memoria. La zona subterránea cierra a las 19:00 (última entrada 18:15).</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Memorial+to+the+Murdered+Jews+of+Europe+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.stiftung-denkmal.de/en/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g04"><div class="blk-hd" onclick="tog('g04')"><div class="blk-time">🕵️</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">Spy Museum (Museo del Espionaje)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">El único museo de espionaje de Europa Central, con más de <b>1.000 objetos</b> en 3.000 m² de exhibición interactiva. Berlín fue la "capital mundial del espionaje" durante la Guerra Fría, y este museo lo explica de forma que no aburre ni a un niño de 11 años. La colección incluye una máquina Enigma original, cámaras espía escondidas en sujetadores, armas camufladas, radios de agentes y atrezzo real de películas de James Bond. Pero lo que lo diferencia de cualquier museo clásico son las <b>estaciones interactivas</b>: el láser maze cronometrado donde cruzas una sala oscura esquivando rayos verdes (estilo Mission Impossible), un detector de mentiras real donde puedes "interrogar" a tus compañeros, estaciones de código Morse, descifrado de mensajes con cifrado César, búsqueda de micrófonos ocultos en un despacho, y un hacker de contraseñas que te dice en cuánto tiempo un ordenador descifraría la tuya.</div>
+<div class="guide-tags"><span>~15€ ADULTO</span><span>~8€ NIÑO</span><span>1.5-2H</span><span>INTERACTIVO</span><span>LASER MAZE</span></div>
+<div class="guide-tip"><b>Consejo:</b> Comprar entrada online con franja horaria en la web oficial (más barato que en taquilla). Ir directo al láser maze al entrar — después se acumula cola. El maze tiene ahora 2 circuitos. Los sábados a mediodía está lleno; la franja 11:00-11:30 es ideal.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/German+Spy+Museum+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.deutsches-spionagemuseum.de/en" target="_blank" style="background:var(--green)">🌐 Web · Entradas</a>
+</div></article>
+
+<article class="blk food" id="g05"><div class="blk-hd" onclick="tog('g05')"><div class="blk-time">🍽️</div><div class="blk-mid"><span class="cat cc">MERCADO</span><div class="blk-title">Markthalle Neun</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Un mercado cubierto de 1891 en pleno <b>Kreuzberg</b>, el barrio más multicultural de Berlín. Los sábados funciona el <b>Wochenmarkt</b> (mercado semanal, 10-18h) con puestos de productores locales, panaderos artesanales, quesos, carnes ahumadas, y comida callejera de medio mundo. La idea: cada uno coge lo que le apetece de diferentes puestos y se sienta en las mesas comunales del centro. Es un mercado real donde compran los vecinos, no una trampa turística. El edificio en sí es precioso — estructura de hierro forjado con techo de cristal. El jueves por la noche es <b>Street Food Thursday</b> (17-22h), aún más animado que el sábado.</div>
+<div class="guide-tags"><span>SÁBADO 10-18H</span><span>8-15€/PAX</span><span>CADA UNO ELIGE</span><span>KREUZBERG</span></div>
+<div class="guide-tip"><b>Consejo:</b> Llegar con hambre real. Probar el Flammkuchen (pizza alsaciana fina) y el pulled pork BBQ. El puesto de café "Populus Coffee" es excelente. Ir al baño antes — solo hay uno y hay cola.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Markthalle+Neun+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://markthalleneun.de/en" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g06"><div class="blk-hd" onclick="tog('g06')"><div class="blk-time">🎨</div><div class="blk-mid"><span class="cat cp">STREET ART</span><div class="blk-title">East Side Gallery</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">El tramo más largo del <b>Muro de Berlín que queda en pie</b>: 1.3 km de hormigón pintado por 118 artistas de 21 países en 1990, justo después de la caída. No es un museo — es la calle. Caminas por la acera del lado este (donde antes no podías ni acercarte sin que te dispararan) y vas descubriendo murales que van de lo político a lo poético. Los tres imprescindibles: el <b>beso entre Brezhnev y Honecker</b> (Dmitri Vrubel, "Dios mío, ayúdame a sobrevivir a este amor mortal"), el <b>Trabant rompiendo el muro</b> (Birgit Kinder), y <b>"It Happened in November"</b> (Kani Alavi, con cientos de figuras cruzando). Muchos murales han sido restaurados, otros tienen grafitis encima — eso también es parte de la historia.</div>
+<div class="guide-tags"><span>GRATIS 24H</span><span>1.3 KM</span><span>30-45 MIN</span><span>118 MURALES</span></div>
+<div class="guide-tip"><b>Consejo:</b> Empezar desde el lado de Oberbaumbrücke (el puente rojo con torres) para tener los murales más famosos primero. No intentar ver los 1.3 km enteros si hay cansancio — los mejores están en los primeros 500m.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/East+Side+Gallery+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.eastsidegalleryberlin.de/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g07"><div class="blk-hd" onclick="tog('g07')"><div class="blk-time">🎮</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">Computerspielemuseum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">El museo de videojuegos más grande de Europa. Lo que lo hace especial: <b>no es una vitrina, es una sala recreativa gigante donde todo se toca y se juega</b>. Hay más de 300 objetos expuestos que cubren la historia completa desde Pong (1972) hasta la realidad virtual, pero la gracia es que puedes jugar en consolas y máquinas originales. La <b>PainStation</b> es legendaria: un Pong donde el perdedor recibe calor, vibración o un pequeño latigazo de aire en la mano (controlado, pero real — la gente grita). Las máquinas arcade de los 80 funcionan con hardware original. Hay un casco de VR de 1995 que pesa 3 kg y te das cuenta de lo lejos que ha llegado la tecnología. La fachada tiene un mando de videojuego gigante.</div>
+<div class="guide-tags"><span>~11€/7€</span><span>1.5-2H</span><span>TODO SE JUEGA</span><span>PAINSTATION</span><span>ARCADE 80s</span></div>
+<div class="guide-tip"><b>Consejo:</b> Ir después de las 15:00 — hay menos grupos escolares. Mínimo 1.5h para disfrutarlo. El teen no querrá irse. La zona de arcade retro está al fondo a la izquierda.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Computerspielemuseum+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.computerspielemuseum.de/en/" target="_blank" style="background:var(--green)">🌐 Web · Entradas</a>
+</div></article>
+
+<article class="blk food" id="g08"><div class="blk-hd" onclick="tog('g08')"><div class="blk-time">🌅</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">Klunkerkranich</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Un bar-jardín-terraza <b>en la azotea de un parking</b> de un centro comercial en Neukölln. Suena raro. Es genial. Llegas al centro comercial Neukölln Arcaden, subes al parking P5, empujas una puerta que parece no llevar a nada, subes una última rampa a pie, y de repente estás en un jardín con plantas, mesas de madera, un DJ pinchando, y una <b>vista panorámica de todo Berlín</b> con la Fernsehturm (368m) al fondo. Los sábados hay DJ de música electrónica suave. La carta tiene pizzas, bowls y ensaladas a buen precio. El momento cumbre es el atardecer (~20:00 en mayo) — la luz dorada sobre los tejados de Berlín con la torre de televisión cambiando de color.</div>
+<div class="guide-tags"><span>ROOFTOP SECRETO</span><span>SUNSET ~20:00</span><span>DJ SÁBADOS</span><span>3-5€ ENTRADA</span><span>10-20€/PAX</span></div>
+<div class="guide-tip"><b>Consejo:</b> Llegar entre 18:30 y 19:00 para pillar sitio antes del sunset. La entrada se paga en efectivo a veces. No aparece en Google Maps fácilmente — busca "Klunkerkranich" directamente.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Klunkerkranich+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://klunkerkranich.org/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g09"><div class="blk-hd" onclick="tog('g09')"><div class="blk-time">🔧</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">Deutsches Technikmuseum + Spectrum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">El museo de tecnología más grande de Alemania, y uno de los más interactivos de Europa. Lo primero que ves al acercarte es un <b>avión real colgando del tejado</b> — un Douglas C-47 "Rosinenbomber" del Puente Aéreo de Berlín (1948-49). Dentro hay más de 40 aviones originales, locomotoras reales donde puedes entrar en la cabina, barcos, la historia completa de la informática (desde los telares hasta Internet), imprentas, telecomunicaciones, y coches históricos. Pero el plato fuerte para familias es el <b>Science Center Spectrum</b>, un edificio adjunto con 4 plantas y +150 experimentos interactivos donde TODO se toca. No hay recorrido — vas donde quieres y tocas lo que quieres. La "casa de la bruja" distorsiona tu percepción del equilibrio, hay cuerdas donde cuelgas para sentir la gravedad, mezclas colores con luz solar real, y el péndulo de Foucault demuestra en vivo que la Tierra rota. Los teens se vuelven absolutamente locos aquí.</div>
+<div class="guide-tags"><span>GRATIS &lt;18</span><span>~8€ ADULTO</span><span>DOM 10-18H</span><span>2H</span><span>150+ EXPERIMENTOS</span><span>AVIÓN EN TEJADO</span></div>
+<div class="guide-tip"><b>Consejo:</b> Ir directo al Spectrum primero (entrada separada por Möckernstraße) y dedicar 1h ahí. Después cruzar al museo principal y subir a la 3ª planta (aviación) para ver los aviones desde cerca. La terraza junto al Rosinenbomber tiene vistas del skyline. Dom abre 10:00.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Deutsches+Technikmuseum+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://technikmuseum.berlin/en/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g10"><div class="blk-hd" onclick="tog('g10')"><div class="blk-time">🛥️</div><div class="blk-mid"><span class="cat cp">AVENTURA</span><div class="blk-title">Crucero por el Spree (1h)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Después de dos días caminando y visitando museos, sentarse en un barco y ver Berlín desde el agua es el cambio de ritmo perfecto. El crucero de <b>1 hora</b> sale del embarcadero de Nikolaiviertel (junto al DDR Museum) y recorre el centro histórico por el río Spree: pasas junto a la <b>Isla de los Museos</b> (5 museos en una isla, Patrimonio UNESCO), la <b>Catedral de Berlín</b> con su cúpula verde, el <b>Reichstag</b> visto desde abajo, la Haus der Kulturen der Welt (el "edificio de la ostra"), y el Hauptbahnhof. Pasas por debajo de <b>11 puentes</b>, cada uno con su historia. Audio en alemán e inglés. Al volver al punto de embarque, Hackescher Markt queda a 8 minutos andando — cierre perfecto antes del aeropuerto.</div>
+<div class="guide-tags"><span>~18-22€ ADULTO</span><span>~10-12€ NIÑO</span><span>1 HORA</span><span>CADA 30 MIN</span><span>11 PUENTES</span></div>
+<div class="guide-tip"><b>Consejo:</b> Compañías principales: Stern und Kreisschiffahrt y Reederei Riedel. Se puede comprar en el embarcadero directamente. Sentarse en el lado derecho (estribor) para las mejores vistas del Reichstag. Llevar chaqueta — en el agua refresca incluso en mayo.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Schifffahrt+Nikolaiviertel+Berlin" target="_blank">📍 Ver embarcadero</a>
+<a class="bmap sm" href="https://www.sternundkreis.de/en/" target="_blank" style="background:var(--green)">🌐 Stern und Kreisschiffahrt</a>
+</div></article>
+
+<article class="blk food" id="g11"><div class="blk-hd" onclick="tog('g11')"><div class="blk-time">🍔</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">Burgermeister</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Un puesto de hamburguesas instalado dentro de un <b>baño público reconvertido de ~1900</b>, debajo de las vías elevadas del metro U1 en Schlesisches Tor. El edificio es octogonal, con azulejos originales de la época, y los trenes pasan literalmente por encima cada 3-4 minutos haciendo temblar las mesas. Es el contraste perfecto entre la hamburguesa gourmet (carne fresca, brioche tostado, salsas caseras) y el caos urbano berlinés. La <b>Meisterburger</b> es la estrella: ternera, queso fundido, bacon crujiente, lechuga, tomate, cebolla caramelizada. Cola habitual: 10-15 minutos. Merece cada segundo.</div>
+<div class="guide-tags"><span>8-14€/PAX</span><span>COLA 10-15 MIN</span><span>BAÑO RECONVERTIDO 1900</span><span>U-BAHN ENCIMA</span></div>
+<div class="guide-tip"><b>Consejo:</b> Ir con la cuenta atrás en mente (el vuelo es por la tarde). La cola va rápido. Pedir la Meisterburger. Comer de pie o en los bancos de fuera mirando pasar los trenes.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Burgermeister+Schlesisches+Tor+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.burgermeister.de/en/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g12"><div class="blk-hd" onclick="tog('g12')"><div class="blk-time">🏘️</div><div class="blk-mid"><span class="cat cm">MUSEO</span><div class="blk-title">DDR Museum</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Un museo donde <b>todo se toca, se abre, se sienta y se prueba</b>. Recrea la vida cotidiana en la Alemania del Este (RDA/DDR) entre 1949 y 1989: el salón típico con su televisor soviético, la cocina donde todos los productos eran estatales e idénticos, el armario con la ropa que podías comprar (poca variedad, mucho poliéster). Lo más impactante: el <b>simulador de Trabant</b> — te sientas en un Trabi original de 26 caballos y "conduces" por las calles de Berlín Este (ir a 80 km/h ya es una aventura). También hay <b>auriculares de la Stasi</b> donde escuchas interceptaciones telefónicas reales, y un interrogatorio simulado. Está junto al río Spree, frente a la Catedral de Berlín.</div>
+<div class="guide-tags"><span>~14€/7€</span><span>1-1.5H</span><span>TODO SE TOCA</span><span>SIMULADOR TRABANT</span><span>STASI</span></div>
+<div class="guide-tip"><b>Consejo:</b> Abrir TODOS los cajones y puertas — el museo está diseñado para eso. El simulador de Trabi tiene cola; hacerlo pronto. Las interceptaciones Stasi están al fondo y poca gente llega hasta ahí.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/DDR+Museum+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.ddr-museum.de/en" target="_blank" style="background:var(--green)">🌐 Web · Entradas</a>
+</div></article>
+
+<article class="blk" id="g13"><div class="blk-hd" onclick="tog('g13')"><div class="blk-time">🛍️</div><div class="blk-mid"><span class="cat cs">COMPRAS</span><div class="blk-title">Hackescher Markt / Höfe</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Un complejo de <b>8 patios interconectados</b> (Hackesche Höfe) que forman el conjunto de patios más grande de Alemania. Construidos en 1906, los azulejos Art Nouveau del primer patio son patrimonio protegido — colores pastel, formas geométricas, impresionantes. Cada patio tiene su carácter: galerías de arte, boutiques de diseño berlinés, cafés con terraza, un cine independiente, y la famosa <b>Ampelmann Shop</b> (patio 5) donde venden todo tipo de merchandising del muñeco del semáforo de Berlín Este — el Ampelmännchen con su sombrero. La zona alrededor (Hackescher Markt) tiene restaurantes, heladerías y tiendas de segunda mano. Es el último paseo perfecto antes de ir al aeropuerto.</div>
+<div class="guide-tags"><span>GRATIS PASEAR</span><span>8 PATIOS</span><span>ART NOUVEAU 1906</span><span>AMPELMANN</span><span>45 MIN</span></div>
+<div class="guide-tip"><b>Consejo:</b> Entrar por Rosenthaler Straße 40 y atravesar los 8 patios de principio a fin. El Ampelmann es el souvenir perfecto de Berlín para el teen. El último patio tiene el cine indie.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Hackesche+Hoefe+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.hackesche-hoefe.com/" target="_blank" style="background:var(--green)">🌐 Web oficial</a>
+</div></article>
+
+<article class="blk" id="g14"><div class="blk-hd" onclick="tog('g14')"><div class="blk-time">🌙</div><div class="blk-mid"><span class="cat cp">MONUMENTO</span><div class="blk-title">Puerta de Brandeburgo + Reichstag de noche</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Ver la Puerta de Brandeburgo de noche es una experiencia completamente diferente a verla de día. Iluminada con focos cálidos sobre la piedra arenisca, sin las multitudes de turistas diurnas, con la Pariser Platz casi vacía — es uno de esos momentos donde sientes la escala de la historia. La puerta fue construida en 1791, sirvió como frontera entre este y oeste durante el Muro, y fue el escenario de la reunificación en 1989. Si sigues caminando 5 minutos hacia el norte, llegas al <b>Reichstag con la cúpula iluminada</b> — el cristal de Foster brilla desde dentro como una linterna gigante. Y si miras al suelo por el camino, encontrarás <b>Stolpersteine</b>: pequeñas placas de latón dorado empotradas en la acera con los nombres de víctimas del Holocausto que vivían en ese edificio. Berlín tiene más de 9.000.</div>
+<div class="guide-tags"><span>GRATIS 24H</span><span>MEJOR DE NOCHE</span><span>FOTO IMPRESCINDIBLE</span><span>STOLPERSTEINE</span></div>
+<div class="guide-tip"><b>Consejo:</b> Ir entre 23:00 y 00:00 — hay poca gente y la iluminación es perfecta. No hace falta flash para fotos: la luz ambiente es suficiente con un móvil moderno.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Brandenburg+Gate+Berlin" target="_blank">📍 Ver en Maps</a>
+</div></article>
+
+<article class="blk" id="g15"><div class="blk-hd" onclick="tog('g15')"><div class="blk-time">🛹</div><div class="blk-mid"><span class="cat cp">TIEMPO LIBRE</span><div class="blk-title">Boxhagener Platz (Boxi)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Una plaza de barrio en <b>Friedrichshain</b> donde los berlineses jóvenes van a pasar el rato. Los sábados hay un <b>mercadillo de segunda mano</b> por la mañana y los domingos un mercado de comida ecológica. A cualquier hora hay ambiente en las terrazas de los bares que rodean la plaza. La calle <b>Simon-Dach-Straße</b> que sale de la plaza es la arteria social del barrio — bares, heladerías, tiendas de vinilos. Es un lugar pensado para que el teen tenga 30 minutos de autonomía (explorar, helado, grafitis) mientras los adultos toman algo tranquilamente en una terraza. Reagrupamiento fácil porque la plaza es un cuadrado abierto con visibilidad total.</div>
+<div class="guide-tags"><span>GRATIS</span><span>BARRIO LOCAL</span><span>30 MIN LIBRE</span><span>CAFÉS + HELADOS</span><span>VINILOS</span></div>
+<div class="guide-tip"><b>Consejo:</b> Helado en <b>Cuore di Vetro</b> (artesanal italiano). La tienda de vinilos <b>Bis aufs Messer Records</b> en Simon-Dach-Str. es una joya para quien le guste la música. Punto de reagrupamiento: esquina noroeste de la plaza a las 18:00.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Boxhagener+Platz+Berlin" target="_blank">📍 Ver en Maps</a>
+</div></article>
+
+<article class="blk" id="g16"><div class="blk-hd" onclick="tog('g16')"><div class="blk-time">📡</div><div class="blk-mid"><span class="cat cm">VISITA</span><div class="blk-title">Fernsehturm (TV Tower)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">El edificio más alto de Alemania: <b>368 metros</b> de hormigón, acero y la esfera plateada que se ha convertido en el símbolo de Berlín. Construida por la RDA en 1969 como demostración del poder socialista, hoy es la atracción más visitada de la ciudad con más de 1 millón de visitantes al año. El ascensor sube 203 metros en 40 segundos. Arriba hay una plataforma panorámica con 60 ventanas que dan la vuelta completa a la ciudad — cada ventana tiene un mapa que te señala exactamente lo que estás viendo. El <b>Bar Sphere</b> es el bar más alto de Berlín, y el restaurante giratorio <b>Sphere</b> (del chef Tim Raue, estrella Michelin) rota 360° cada 30 minutos. Al atardecer, la vista es espectacular. En días soleados, la esfera refleja una enorme cruz de luz sobre la ciudad — los berlineses la llamaban "la venganza del Papa" contra el ateísmo oficial de la RDA.</div>
+<div class="guide-tags"><span>~27€ FAST VIEW</span><span>203M ALTURA</span><span>40 SEG ASCENSOR</span><span>360° PANORAMA</span><span>BAR MÁS ALTO</span></div>
+<div class="guide-tip"><b>Consejo:</b> Comprar <b>Fast View Ticket</b> online (tv-turm.de) — cuesta unos euros más pero te saltas la cola, que puede ser de 1-2 horas. Ir al atardecer para ver la transición día-noche. La experiencia VR "Berlin's Odyssey" (9 siglos de historia) es un extra que vale la pena.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Berliner+Fernsehturm" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://tv-turm.de/en/" target="_blank" style="background:var(--green)">🌐 Web · Entradas</a>
+</div></article>
+
+<article class="blk food" id="g17"><div class="blk-hd" onclick="tog('g17')"><div class="blk-time">🍽️</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">Lutter &amp; Wegner (Gendarmenmarkt)</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="guide-txt">Fundado en <b>1811</b>, es uno de los restaurantes más antiguos de Berlín. Situado en la esquina suroeste de la <b>Gendarmenmarkt</b> — la plaza más bonita de la ciudad, flanqueada por dos catedrales gemelas (la francesa y la alemana) y el Konzerthaus. La terraza tiene vistas directas a la plaza iluminada, que de noche parece un decorado de película. La cocina es berlinesa clásica con toques austríacos: el <b>Wiener Schnitzel</b> (ternera empanada fina y crujiente) es la estrella, pero el codillo berlinés (Eisbein) y los Königsberger Klopse (albóndigas en salsa de alcaparras) también merecen. Carta de vinos extensa, especialmente en blancos alemanes. Ambiente elegante pero sin presión — apto para familias con niños.</div>
+<div class="guide-tags"><span>25-40€/PAX</span><span>DESDE 1811</span><span>TERRAZA GENDARMENMARKT</span><span>WIENER SCHNITZEL</span><span>RESERVAR</span></div>
+<div class="guide-tip"><b>Consejo:</b> Reservar con 2-3 días de antelación pidiendo mesa en la terraza (si el tiempo lo permite). El Gendarmenmarkt iluminado de noche es el broche perfecto del viaje. A 6 minutos a pie del hotel — la cena de despedida ideal.</div>
+<a class="bmap sm" href="https://www.google.com/maps/search/Lutter+und+Wegner+Gendarmenmarkt+Berlin" target="_blank">📍 Ver en Maps</a>
+<a class="bmap sm" href="https://www.l-w-berlin.de/" target="_blank" style="background:var(--green)">🌐 Web · Reservar</a>
+</div></article>
+
+</div>
+
+<!-- ═══════════════════════════════ HOTEL ═══════════════════════════════ -->
+<div class="panel" id="p4">
+<div class="dhdr"><div class="tag">Hotel</div><h2>🏨 Info Hotel Completa</h2><div class="obj">Todo lo que necesitas saber del apartamento</div></div>
+
+<div class="hotel-hero">
+  <div class="hstars">⭐⭐⭐⭐</div>
+  <div class="hname">Mercure Hotel & Residenz</div>
+  <div class="haddr">📍 Schützenstraße 11, 10117 Berlin-Mitte</div>
+</div>
+
+<div class="hotel-grid">
+  <div class="hotel-card"><div class="hc-icon">🕐</div><div class="hc-title">Check-in</div><div class="hc-text">14:00 — 24:00<br>Recepción 24 horas</div></div>
+  <div class="hotel-card"><div class="hc-icon">🕐</div><div class="hc-title">Check-out</div><div class="hc-text">Antes de las 11:00<br>Equipaje en recepción gratis</div></div>
+  <div class="hotel-card"><div class="hc-icon">🚇</div><div class="hc-title">Metro</div><div class="hc-text">U Kochstraße (U6)<br>3 min a pie del hotel</div></div>
+  <div class="hotel-card"><div class="hc-icon">📶</div><div class="hc-title">WiFi</div><div class="hc-text">Gratis en todo el hotel<br>Código en el check-in</div></div>
+</div>
+
+<article class="blk" id="h01"><div class="blk-hd" onclick="tog('h01')"><div class="blk-time" style="color:var(--purple);background:rgba(139,92,246,.1)">🍳</div><div class="blk-mid"><span class="cat cc">DESAYUNO</span><div class="blk-title">Desayuno buffet + opciones</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Desayuno buffet</strong> en el restaurante del hotel, cada mañana desde las 06:30 (laborables) / 07:00 (festivos).</div>
+<div class="hotel-grid" style="margin:12px 0">
+  <div class="hotel-card"><div class="hc-icon">🥐</div><div class="hc-title">Buffet completo</div><div class="hc-text">Pan, bollería, Schrippen berlineses</div></div>
+  <div class="hotel-card"><div class="hc-icon">🥚</div><div class="hc-title">Caliente</div><div class="hc-text">Huevos, salchichas, bacon</div></div>
+  <div class="hotel-card"><div class="hc-icon">🧀</div><div class="hc-title">Fiambres</div><div class="hc-text">Quesos, embutidos, salmón</div></div>
+  <div class="hotel-card"><div class="hc-icon">🍎</div><div class="hc-title">Fruta + Cereales</div><div class="hc-text">Fruta fresca, yogur, granola</div></div>
+  <div class="hotel-card"><div class="hc-icon">☕</div><div class="hc-title">Bebidas</div><div class="hc-text">Café, té, zumos, leche</div></div>
+  <div class="hotel-card"><div class="hc-icon">🧃</div><div class="hc-title">En habitación</div><div class="hc-text">Minibar, cafetera/tetera</div></div>
+</div>
+<div class="nfo"><strong>Consejo:</strong> Desayunar bien en el buffet — es la comida más cómoda del día. El buffet es amplio. Terraza en el patio interior si hace buen tiempo.</div>
+</div></article>
+
+<article class="blk" id="h02"><div class="blk-hd" onclick="tog('h02')"><div class="blk-time" style="color:var(--purple);background:rgba(139,92,246,.1)">🛏️</div><div class="blk-mid"><span class="cat ch">HABITACIONES</span><div class="blk-title">Distribución y comodidades</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Tipo recomendado:</strong> 2 habitaciones dobles + 1 individual o cama extra (5 personas)</div>
+<div class="nfo">Cada apartamento incluye:</div>
+<div class="hotel-grid" style="margin:12px 0">
+  <div class="hotel-card"><div class="hc-icon">🛋️</div><div class="hc-title">Zona estar</div><div class="hc-text">Algunas habitaciones con balcón y sofá</div></div>
+  <div class="hotel-card"><div class="hc-icon">📺</div><div class="hc-title">Smart TV 43"</div><div class="hc-text">Canales digitales en cada habitación</div></div>
+  <div class="hotel-card"><div class="hc-icon">🚿</div><div class="hc-title">Baño</div><div class="hc-text">Ducha de lluvia (rainfall), amenities gratuitos</div></div>
+  <div class="hotel-card"><div class="hc-icon">🔇</div><div class="hc-title">Insonorizado</div><div class="hc-text">Habitaciones con aislamiento acústico</div></div>
+  <div class="hotel-card"><div class="hc-icon">👕</div><div class="hc-title">Plancha</div><div class="hc-text">Plancha + tabla incluidas</div></div>
+  <div class="hotel-card"><div class="hc-icon">🔒</div><div class="hc-title">Caja fuerte</div><div class="hc-text">En cada apartamento</div></div>
+  <div class="hotel-card"><div class="hc-icon">❄️</div><div class="hc-title">Aire acondicionado</div><div class="hc-text">En todas las habitaciones</div></div>
+  <div class="hotel-card"><div class="hc-icon">💇</div><div class="hc-title">Secador</div><div class="hc-text">En el baño</div></div>
+</div>
+<div class="nfo"><strong>Arquitectura:</strong> Edificio diseñado por <strong>Aldo Rossi</strong> (arquitecto italiano). Integrado en el "Quarter Schützenstraße". 117 habitaciones + 24 apartamentos.</div>
+<div class="nfo"><strong>Niños:</strong> Consultar política de camas extra en la reserva. Servicio de babysitting disponible bajo petición.</div>
+</div></article>
+
+<article class="blk food" id="h03"><div class="blk-hd" onclick="tog('h03')"><div class="blk-time">🍷</div><div class="blk-mid"><span class="cat cc">RESTAURANTE</span><div class="blk-title">Bar Checkpoint + Restaurante</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="loc"><div class="loc-n">Bar Checkpoint + Restaurante</div><div class="loc-a">📍 Planta baja del hotel</div><div class="loc-d">Bar en el lobby · Restaurante con terraza patio · Sin salir del hotel</div></div>
+<div class="nfo"><strong>Bar:</strong> Horario amplio. Restaurante: desayuno buffet 06:30-10:30</div>
+<div class="nfo"><strong>Desayuno:</strong> Buffet incluido o bajo petición según tarifa. Schrippen (panecillos berlineses), huevos, fiambres, fruta, café.</div>
+<div class="nfo"><strong>Día:</strong> Snacks y bebidas en el bar. WiFi en todo el hotel.</div>
+<div class="nfo"><strong>Noche:</strong> Cócteles, cerveza, vino. Carta de snacks. Terraza en patio interior (temporada).</div>
+<div class="nfo"><strong>Extra:</strong> Servicio de habitaciones 24h. Room service disponible.</div>
+<a class="bmap" href="https://www.google.com/maps/search/restaurante del hotel+Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin" target="_blank">🗺️ Ver en Maps</a>
+</div></article>
+
+<article class="blk" id="h04"><div class="blk-hd" onclick="tog('h04')"><div class="blk-time" style="color:var(--purple);background:rgba(139,92,246,.1)">🧹</div><div class="blk-mid"><span class="cat ch">SERVICIOS</span><div class="blk-title">Limpieza, lavandería, parking</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Limpieza:</strong> Diaria incluida. Servicio de habitaciones todos los días.</div>
+<div class="nfo"><strong>Lavandería:</strong> Servicio de lavandería y tintorería en el hotel.</div>
+<div class="nfo"><strong>Parking:</strong> 25€/noche. Plazas limitadas — reservar con antelación.</div>
+<div class="nfo"><strong>Conserjería:</strong> En recepción. Ayuda con tours, tickets, restaurantes, taxis.</div>
+<div class="nfo"><strong>Tintorería:</strong> Servicio de dry cleaning disponible.</div>
+<div class="nfo"><strong>Idiomas:</strong> Personal multilingüe (alemán, inglés, español posible).</div>
+<div class="nfo"><strong>Edificio:</strong> 117 habitaciones + 24 apartamentos. Arquitecto: Aldo Rossi. No fumadores. Sauna + Gym 24h. Alquiler bicicletas. Peluquería.</div>
+</div></article>
+
+<article class="blk" id="h05"><div class="blk-hd" onclick="tog('h05')"><div class="blk-time" style="color:var(--green);background:rgba(16,185,129,.1)">📍</div><div class="blk-mid"><span class="cat cp">ENTORNO</span><div class="blk-title">Qué hay alrededor del hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>El hotel está en pleno centro de Berlín.</strong> Todo lo importante queda cerca a pie:</div>
+<div class="tl"><div class="tl-hdr">📍 DISTANCIAS A PIE DESDE EL HOTEL</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Checkpoint Charlie — 3 min (300m)</b><p>Literalmente en la puerta. El museo y la marca en el suelo.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>REWE City supermercado — 5 min</b><p>Friedrichstr. 56. Abierto hasta 22:00. Fruta, agua, desayuno.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Topografía del Terror — 5 min (400m)</b><p>Exposición gratuita sobre la Gestapo y las SS. Al aire libre.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Gendarmenmarkt — 6 min (500m)</b><p>La plaza más bonita de Berlín. Dos catedrales gemelas + Konzerthaus.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Potsdamer Platz — 10 min (800m)</b><p>Centro comercial, cines, Sony Center. Mall of Berlin.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Memorial Holocausto — 12 min (1 km)</b><p>2.711 bloques de hormigón. Abierto 24h.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-line"></div><div class="tl-c"><b>Puerta de Brandeburgo — 17 min (1.3 km)</b><p>Norte por Friedrichstraße. Icónico.</p></div></div>
+  <div class="tl-step"><div class="tl-dot dw"></div><div class="tl-c"><b>Alexanderplatz — 25 min (2 km) o 12 min metro</b><p>Torre TV, Fernsehturm. Centro neurálgico del este.</p></div></div>
+</div></div>
+<a class="bmap" href="https://www.google.com/maps/search/Mercure+Hotel+Residenz+Checkpoint+Charlie+Berlin" target="_blank">🗺️ Ver hotel en Google Maps</a>
+</div></article>
+
+<article class="blk" id="h06"><div class="blk-hd" onclick="tog('h06')"><div class="blk-time" style="color:var(--teal);background:rgba(45,212,191,.08)">🚇</div><div class="blk-mid"><span class="cat cv">TRANSPORTE</span><div class="blk-title">Cómo moverse desde el hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo"><strong>Estación base: U Kochstraße (U6)</strong> — 3 minutos andando al sur por Friedrichstraße.</div>
+<div class="tl"><div class="tl-hdr">🚇 CONEXIONES DIRECTAS DESDE U KOCHSTRASSE</div><div class="tl-body">
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-line"></div><div class="tl-c"><b>U6 dir. Alt-Tegel (norte)</b><p>Friedrichstraße (2 par.) → Conexión S-Bahn + FEX al aeropuerto<br>Oranienburger Tor (4 par.) → Katz Orange, Sinagoga</p></div></div>
+  <div class="tl-step"><div class="tl-dot dm"></div><div class="tl-c"><b>U6 dir. Alt-Mariendorf (sur)</b><p>Hallesches Tor (2 par.) → Trasbordo U1 hacia Kreuzberg, East Side<br>Tempelhof (5 par.) → Technikmuseum (via Gleisdreieck)</p></div></div>
+</div></div>
+<div class="nfo" style="margin-top:12px"><strong>Nodo crítico: S+U Friedrichstraße</strong> (2 paradas U6 al norte)</div>
+<div class="nfo">Desde Friedrichstraße conectas con S-Bahn (S5/S7/S9) a Hauptbahnhof, Alexanderplatz, y el <strong>FEX directo a BER</strong> (cada 30 min, 22 min al aeropuerto, 3.80€).</div>
+<div class="nfo" style="margin-top:12px"><strong>Billete recomendado:</strong> Tageskarte ABC = 9.50€/pax/día. Cubre metro, bus, tren, FEX. Niños 6-14: ~6.50€.</div>
+</div></article>
+
+<article class="blk" id="h07"><div class="blk-hd" onclick="tog('h07')"><div class="blk-time" style="color:var(--orange);background:rgba(245,158,11,.1)">⚠️</div><div class="blk-mid"><span class="cat cs">NORMAS</span><div class="blk-title">Reglas importantes del hotel</div></div><div class="blk-chev">›</div></div><div class="blk-bd">
+<div class="nfo">🔇 <strong>Silencio obligatorio:</strong> 23:00 — 07:00. Respeto estricto en Alemania.</div>
+<div class="nfo">🚭 <strong>No fumar</strong> en todo el edificio. Ni balcón.</div>
+<div class="nfo">🐾 <strong>Mascotas permitidas</strong> (consultar suplemento en la reserva).</div>
+<div class="nfo">💳 <strong>Check-in:</strong> Documento de identidad + tarjeta de crédito obligatorio.</div>
+<div class="nfo">📵 <strong>Cancelación:</strong> Según condiciones de tu reserva en Accor/Booking.</div>
+<div class="nfo">🧒 <strong>Niños &lt;12:</strong> Gratis en camas existentes. Niños ≥13: tarifa adulto.</div>
+<div class="nfo">📞 <strong>Teléfono hotel:</strong> +49 30 206 320. Recepción: 24 horas.</div>
+<div class="nfo" style="margin-top:12px"><strong>Web oficial:</strong> <a href="https://all.accor.com/hotel/3120/index.en.shtml" target="_blank" style="color:var(--blue)">all.accor.com/hotel/3120 (Accor/Mercure)</a></div>
+</div></article>
+</div>
+
+<footer class="foot">Guía Misión Berlín V6 · 24-27 Abril 2026<br>Toca 📤 para compartir con el grupo</footer>
+
+<button class="share-btn" id="shareBtn" onclick="shareGuide()">📤 Compartir</button>
+<div class="offline-badge">📡 MODO OFFLINE</div>
+
+<script>
+function go(n){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));document.getElementById('p'+n).classList.add('on');document.querySelectorAll('.tabs button')[n].classList.add('on');window.scrollTo({top:document.querySelector('.tabs-wrap').offsetTop,behavior:'smooth'})}
+function tog(id){document.getElementById(id).classList.toggle('open')}
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='light'?'🌙':'☀️';document.getElementById('meta-theme').content=t==='light'?'#F0F1F5':'#0B0E14';try{localStorage.setItem('bm-theme',t)}catch(e){}}
+function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(c==='dark'?'light':'dark')}
+
+// Share
+function shareGuide(){
+  const url=window.location.href;
+  const data={title:'Misión Berlín 2026',text:'Guía de viaje Berlín — 3 días, rutas, transporte, restaurantes y misiones teen.',url:url};
+  if(navigator.share){navigator.share(data).catch(()=>{})}
+  else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>{const b=document.getElementById('shareBtn');b.textContent='✅ Copiado!';setTimeout(()=>b.innerHTML='📤 Compartir',2000)}).catch(()=>{})}
+  else{prompt('Copia este enlace:',url)}
+}
+
+// Offline indicator
+window.addEventListener('online',()=>document.body.classList.remove('offline'));
+window.addEventListener('offline',()=>document.body.classList.add('offline'));
+if(!navigator.onLine)document.body.classList.add('offline');
+
+// Service Worker
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+
+// Theme init
+(function(){let s=null;try{s=localStorage.getItem('bm-theme')}catch(e){}if(s)applyTheme(s);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)applyTheme('light');else applyTheme('dark');window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>{let x=null;try{x=localStorage.getItem('bm-theme')}catch(z){}if(!x)applyTheme(e.matches?'dark':'light')});document.querySelector('.panel.on .blk')?.classList.add('open')})()
+</script>
+</body>
+</html>
