@@ -6,9 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0B0E14" id="meta-theme">
-<title>Misión Berlín · 24-27 Abril 2026</title>
+<title>Berlin Weekend · 24-27 Abril 2026</title>
 <meta name="description" content="Guía de Flujo Total — 3 días en Berlín. Navegación paso a paso para 5 viajeros.">
-<meta property="og:title" content="Misión Berlín 2026">
+<meta property="og:title" content="Berlin Weekend 2026">
 <meta property="og:description" content="Guía interactiva de viaje: 3 días en Berlín con rutas, transporte, restaurantes y misiones teen.">
 <meta property="og:type" content="website">
 <link rel="manifest" href="./manifest.json">
@@ -48,11 +48,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-normal);letter-spacing:var(--ls-normal);font-weight:var(--fw-regular);padding-bottom:env(safe-area-inset-bottom,24px);transition:background .4s,color .4s;overflow-x:hidden}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 var(--sp-lg);height:48px;padding-top:env(safe-area-inset-top,0px);background:linear-gradient(to bottom,var(--surface) 0%,var(--surface) 60%,transparent 100%);font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);letter-spacing:var(--ls-wide)}
-.topbar-title{font-weight:var(--fw-bold);color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:6px;flex-shrink:0}
-.topbar-title b{color:var(--accent);font-weight:var(--fw-black);font-size:var(--fs-body-sm)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;flex-direction:column;gap:6px;padding:8px var(--sp-lg);padding-top:calc(8px + env(safe-area-inset-top,0px));background:linear-gradient(to bottom,var(--surface) 0%,var(--surface) 70%,transparent 100%);font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);letter-spacing:var(--ls-wide)}
+.topbar-row1{display:flex;align-items:center;gap:10px;min-height:32px}
+.topbar-row2{display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0}
+.topbar-title{font-weight:var(--fw-bold);color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-shrink:0;font-size:1.5rem}
+.topbar-title b{color:var(--accent);font-weight:var(--fw-black);font-size:1.5rem;letter-spacing:-0.02em}
 .topbar-info{font-size:var(--fs-nano);color:var(--dim2)}
-.topbar-weather{display:flex;align-items:center;gap:6px;min-width:0;flex-shrink:1}
 .weather-now{display:flex;align-items:center;gap:4px;padding:5px 10px;background:var(--section);border:2px solid var(--card-border);border-radius:100px;font-family:var(--ff-mono);font-size:12px;color:var(--text);font-weight:var(--fw-bold);cursor:pointer;transition:transform .15s,opacity .2s;flex-shrink:0;letter-spacing:-0.02em}
 .weather-now:active{transform:scale(.94)}
 .weather-now.loading{opacity:.5}
@@ -71,32 +72,27 @@ body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-s
 .wday.today .wdnum{color:var(--accent)}
 .wdi{font-size:12px;line-height:1}
 .wdt{color:var(--text);font-weight:var(--fw-bold);letter-spacing:-0.02em}
-@media(max-width:540px){
-  .weather-now{display:none}
-  .topbar{padding:0 var(--sp-md);gap:8px}
-  .topbar-title b{font-size:var(--fs-caption)}
-  .weather-strip{font-size:10px;padding:4px 8px;gap:3px}
+@media(max-width:440px){
+  .topbar{padding:8px var(--sp-md);padding-top:calc(8px + env(safe-area-inset-top,0px))}
+  .weather-strip{font-size:10px;padding:4px 8px;gap:4px}
   .wdlbl{font-size:9px}
   .wdnum{font-size:8px}
   .wdi{font-size:11px}
-  .wday{gap:2px}
   .wday + .wday{padding-left:8px}
-  .wday + .wday::before{left:3px}
 }
-@media(max-width:400px){
-  .topbar-title b{display:none}
-  .weather-strip{font-size:9px;padding:3px 7px}
+@media(max-width:360px){
+  .weather-now{padding:4px 8px;font-size:11px}
+  .weather-strip{font-size:9px;padding:3px 6px}
   .wdlbl{font-size:8px}
   .wdnum{font-size:7px}
-  .wdi{font-size:10px}
 }
-.hero{padding:28px var(--sp-lg) 24px;margin-top:calc(48px + env(safe-area-inset-top,0px));background:radial-gradient(ellipse 75% 60% at 14% 10%,var(--hero-glow-coral),transparent 62%),radial-gradient(ellipse 65% 55% at 86% 95%,var(--hero-glow-blue),transparent 62%),var(--surface);transition:opacity .2s ease,background .4s ease}
+.hero{padding:28px var(--sp-lg) 24px;margin-top:calc(94px + env(safe-area-inset-top,0px));background:radial-gradient(ellipse 75% 60% at 14% 10%,var(--hero-glow-coral),transparent 62%),radial-gradient(ellipse 65% 55% at 86% 95%,var(--hero-glow-blue),transparent 62%),var(--surface);transition:opacity .2s ease,background .4s ease}
 .hero.switching{opacity:0}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:0.75rem;font-weight:var(--fw-medium);text-transform:uppercase;color:var(--accent);background:var(--section);padding:8px 18px;border-radius:100px;letter-spacing:var(--ls-wide)}
 .hero h1{font-family:var(--ff-display);font-size:3.5rem;font-weight:var(--fw-black);letter-spacing:-0.04em;line-height:.95;margin-top:14px}
 .hero h1 span{color:var(--accent)}
 .hero .sub{font-family:var(--ff-body);font-size:1rem;color:var(--dim);margin-top:10px;font-weight:var(--fw-regular);line-height:1.45;}
-.tabs-wrap{position:sticky;top:calc(48px + env(safe-area-inset-top,0px));z-index:1000;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.tabs-wrap{position:sticky;top:calc(94px + env(safe-area-inset-top,0px));z-index:1000;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .tabs{display:flex;max-width:600px;margin:0 auto;padding:6px 8px;gap:4px}
 .tabs button{flex:1;padding:10px 4px;min-height:44px;border:none;background:none;font-family:var(--ff-display);font-size:var(--fs-body-sm);font-weight:var(--fw-bold);color:var(--dim2);cursor:pointer;letter-spacing:var(--ls-wide);border-radius:12px;transition:color .2s,background .2s,transform .1s}
 .tabs button:active{transform:scale(.93)}.tabs button.on{color:var(--text);background:var(--tab-on)}
@@ -173,8 +169,6 @@ body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-s
 .kit li{margin-bottom:10px;font-size:var(--fs-body-sm);color:var(--dim);list-style:none;line-height:var(--lh-normal)}.kit b{color:var(--text);font-weight:var(--fw-bold)}
 .tt{position:fixed;bottom:24px;right:20px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:29px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:var(--glow-accent);z-index:2000;border:none;cursor:pointer;transition:transform .15s}
 .tt:active{transform:scale(.88)}
-.share-btn{position:fixed;bottom:24px;left:20px;bottom:calc(24px + env(safe-area-inset-bottom,0px));height:48px;padding:0 20px;border-radius:24px;background:var(--glass);color:var(--text);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;gap:8px;font-family:var(--ff-display);font-size:var(--fs-caption);font-weight:var(--fw-bold);box-shadow:var(--glow);z-index:2000;border:none;cursor:pointer;transition:transform .15s;letter-spacing:var(--ls-normal)}
-.share-btn:active{transform:scale(.92)}
 .offline-badge{display:none;position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);left:50%;transform:translateX(-50%);z-index:3000;font-family:var(--ff-mono);font-size:9px;font-weight:var(--fw-bold);color:var(--orange);background:var(--surface);padding:4px 12px;border-radius:100px;box-shadow:var(--glow);letter-spacing:var(--ls-wide)}
 body.offline .offline-badge{display:block}
 .guide-txt{font-size:var(--fs-body-sm);color:var(--text);line-height:var(--lh-loose);margin:8px 0 12px;letter-spacing:var(--ls-normal)}.guide-txt b{font-weight:var(--fw-bold)}
@@ -211,14 +205,16 @@ body.offline .offline-badge{display:block}
 @media(min-width:431px){.hero{padding-left:var(--sp-xl);padding-right:var(--sp-xl)}.blk,.stbl,.alert{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}.pins,.kit{margin-left:var(--sp-lg);margin-right:var(--sp-lg)}}
 @media(orientation:landscape) and (max-height:500px){.hero{padding:36px var(--sp-lg) 20px}:root{--fs-hero:36px;--fs-h2:22px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-@media print{:root{--floor:#fff;--surface:#fff;--section:#f8f8f8;--text:#000;--dim:#333}.tt,.tabs-wrap,.share-btn{display:none}.panel{display:block!important}.blk-bd{display:block!important}}
+@media print{:root{--floor:#fff;--surface:#fff;--section:#f8f8f8;--text:#000;--dim:#333}.tt,.tabs-wrap{display:none}.panel{display:block!important}.blk-bd{display:block!important}}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <span class="topbar-title">🇩🇪 <b>BERLÍN</b></span>
-  <div class="topbar-weather">
+  <div class="topbar-row1">
+    <span class="topbar-title">🇩🇪 <b>BERLÍN</b></span>
+  </div>
+  <div class="topbar-row2">
     <div class="weather-now" id="weatherNow" onclick="fetchWeather4(true)" role="button" tabindex="0" aria-label="Tiempo actual en Berlín">
       <span class="wni" id="wNowI">🌡️</span>
       <span class="wnt" id="wNowT">—°</span>
@@ -235,9 +231,9 @@ body.offline .offline-badge{display:block}
 <button class="tt" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">☀️</button>
 
 <header class="hero" id="hero">
-  <div class="hero-badge" id="heroBadge">⚡ Misión Berlín 2026</div>
+  <div class="hero-badge" id="heroBadge">⚡ Berlin Weekend 2026</div>
   <h1 id="heroTitle">Berlín<span>.</span></h1>
-  <p class="sub" id="heroSub">Viaje: 4 dies — <b>Mayte, Sílvia, Xavi, Victor y Biel</b></p>
+  <p class="sub" id="heroSub">Viaje: 4 días — <b>Mayte, Sílvia, Xavi, Victor y Biel</b></p>
 </header>
 
 
@@ -864,16 +860,15 @@ body.offline .offline-badge{display:block}
 </section>
 </div>
 
-<footer class="foot">Guía Misión Berlín V6 · 24-27 Abril 2026<br>Creado por Xavi Camins y Victor Quintana &amp; CO.</footer>
+<footer class="foot">Guía Berlin Weekend · 24-27 Abril 2026<br>Creado por Xavi Camins y Victor Quintana &amp; CO.</footer>
 
-<button class="share-btn" id="shareBtn" onclick="shareGuide()">📤 Compartir</button>
 <div class="offline-badge">📡 MODO OFFLINE</div>
 
 <script>
 // Hero data per tab
 const P=['phome','p0','p1','p2','p3','p4'];
 const H=[
-  {b:'🏠 Índice del Viaje',t:'Berlín<span>.</span>',s:'Viaje: 4 dies — <b>Mayte, Sílvia, Xavi, Victor y Biel</b>'},
+  {b:'🏠 Índice del Viaje',t:'Berlín<span>.</span>',s:'Viaje: 4 días — <b>Mayte, Sílvia, Xavi, Victor y Biel</b>'},
   {b:'⚡ Día 1 · Viernes',t:'Llegada<span>.</span>',s:'Instalarse, cenar y absorber Berlín de noche'},
   {b:'⚡ Día 2 · Sábado',t:'Historia<span>.</span>',s:'Museos, street art, mercados y sunset secreto'},
   {b:'⚡ Día 3 · Domingo',t:'Ciencia<span>.</span>',s:'Technikmuseum, río Spree y despedida'},
@@ -905,15 +900,6 @@ function tog(id){document.getElementById(id).classList.toggle('open')}
 function setBlkIdx(){document.querySelectorAll('.panel.on article.blk').forEach((el,i)=>el.style.setProperty('--blk-idx',i))}
 function applyTheme(t){document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='light'?'🌙':'☀️';document.getElementById('meta-theme').content=t==='light'?'#F0F1F5':'#0B0E14';try{localStorage.setItem('bm-theme',t)}catch(e){}}
 function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(c==='dark'?'light':'dark')}
-
-// Share
-function shareGuide(){
-  const url=window.location.href;
-  const data={title:'Misión Berlín 2026',text:'Guía de viaje Berlín — 3 días, rutas, transporte, restaurantes y misiones teen.',url:url};
-  if(navigator.share){navigator.share(data).catch(()=>{})}
-  else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>{const b=document.getElementById('shareBtn');b.textContent='✅ Copiado!';setTimeout(()=>b.innerHTML='📤 Compartir',2000)}).catch(()=>{})}
-  else{prompt('Copia este enlace:',url)}
-}
 
 // Offline
 window.addEventListener('online',()=>document.body.classList.remove('offline'));
