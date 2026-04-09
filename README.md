@@ -1,81 +1,58 @@
-# 🇩🇪 Misión Berlín 2026
+# 🇩🇪 Viaje Berlín — 24, 25, 26 y 27 Abril 2026
 
-**Guía de viaje interactiva** — 3 días en Berlín para 5 viajeros (4 adultos + 1 teen).  
-Navegación paso a paso desde Mercure Hotel & Residenz, Checkpoint Charlie.
+**Guía de viaje interactiva** — 4 días en Berlín para 5 viajeros.
+Mayte, Sílvia, Xavi, Victor y Biel.
 
 ## 🔗 Acceso directo
 
-👉 **[Abrir la guía](https://<TU-USUARIO>.github.io/berlin-mission-guide/)**
-
-> Sustituye `<TU-USUARIO>` por tu usuario de GitHub una vez desplegado.
+👉 **[Abrir la guía](https://victorvqg.github.io/viaje-abril-2026-BERLIN/)**
 
 ## 📱 Cómo usar
 
-1. **Abre el enlace** en el móvil (Safari / Chrome)
-2. **Añade a pantalla de inicio:**
-   - **iPhone:** Compartir → "Añadir a pantalla de inicio"
-   - **Android:** Menú ⋮ → "Añadir a pantalla de inicio"
-3. **Se comporta como una app** — funciona offline después de la primera carga
-4. **Comparte con el grupo:** Pulsa el botón 📤 en la esquina inferior izquierda
+1. Abre el enlace en el móvil
+2. **iPhone:** Compartir → "Añadir a pantalla de inicio"
+3. Se comporta como una app — funciona offline
 
-## ✅ Funcionalidades
+## 🎨 Design System
 
-| Feature | Detalle |
-|---------|---------|
-| 📍 Google Maps | Cada trayecto tiene enlace directo que abre Maps con la ruta |
-| 🌙/☀️ Tema | Oscuro por defecto, cambia con el botón flotante |
-| 📡 Offline | Service Worker cachea todo. Funciona sin conexión |
-| 📤 Compartir | Web Share API (iOS/Android) o copia al portapapeles |
-| 🎯 Misiones Teen | Retos interactivos en cada parada |
-| 🏷️ Categorías | Badges de color: MUSEO, RESTAURANTE, HOTEL, VUELO, etc. |
-| 🚇/👟/🚕 Transporte | Opciones alternativas claramente diferenciadas |
-| 🔵 Salidas metro | Badges teal con la salida exacta de cada estación |
+**"The Nocturnal Concierge"** — Tonal layering, glassmorphism, ambient glow.
+Ver `.claude/skills/nocturnal-concierge.md` para especificaciones completas.
 
-## 📂 Estructura del repo
+## 📂 Estructura
 
 ```
-berlin-mission-guide/
-├── index.html      ← La guía completa (todo en 1 archivo)
-├── manifest.json   ← PWA manifest para instalar como app
-├── sw.js           ← Service Worker para offline
-├── .nojekyll       ← Indica a GitHub Pages que no use Jekyll
-└── README.md       ← Este archivo
+viaje-abril-2026-BERLIN/
+├── index.html                          ← La guía (single-file PWA)
+├── sw.js                               ← Service Worker (cache v6)
+├── manifest.json                       ← PWA manifest
+├── .nojekyll                           ← GitHub Pages config
+├── CLAUDE.md                           ← Instrucciones para Claude Code
+├── .claude/skills/
+│   ├── nocturnal-concierge.md          ← Design system completo
+│   ├── visual-improvements.md          ← Técnicas avanzadas CSS
+│   ├── berlin-itinerary.md             ← Contenido y datos del viaje
+│   └── pwa-deployment.md              ← PWA + deploy
+├── .vscode/settings.json               ← Config VS Code
+└── README.md
 ```
 
-## 🚀 Desplegar en GitHub Pages
-
-### Opción A: Desde la web de GitHub (más fácil)
-
-1. Crea un repositorio nuevo en GitHub: `berlin-mission-guide`
-2. Sube los 4 archivos (`index.html`, `manifest.json`, `sw.js`, `.nojekyll`)
-3. Ve a **Settings → Pages → Source → Deploy from branch → `main` → `/ (root)`**
-4. Espera 1-2 minutos. La URL será `https://<tu-usuario>.github.io/berlin-mission-guide/`
-
-### Opción B: Desde terminal (Claude Code / Git)
+## 🚀 Dev local
 
 ```bash
-cd berlin-mission-guide
-git init
-git add .
-git commit -m "Misión Berlín V5 — guía completa"
-git branch -M main
-git remote add origin https://github.com/<TU-USUARIO>/berlin-mission-guide.git
-git push -u origin main
+# Servir
+python3 -m http.server 8080
+# o con Live Server en VS Code
+
+# Deploy
+git add . && git commit -m "v6.x" && git push
 ```
 
-Después activa GitHub Pages en Settings → Pages → `main` branch.
+## ✅ Antes de cada deploy
 
-## 📋 Contenido del viaje
+1. Verificar que `sw.js` tiene CACHE_NAME bumpeado
+2. Zero `border: 1px solid` en el CSS
+3. Todos los tap targets ≥ 44px
+4. JetBrains Mono en números y timestamps
 
-### Día 1 — Viernes: Llegada + Inmersión Nocturna
-- ✈️ Llegada BER → 🏨 Check-in → 🍽️ Katz Orange → 🌙 Brandenburger Tor
-
-### Día 2 — Sábado: Tecnología, Historia + Vibe
-- 🏛️ Reichstag → ◼️ Memorial → 🕵️ Spy Museum → 🍽️ Markthalle Neun → 🎨 East Side Gallery → 🎮 Computerspielemuseum → 🛹 Boxhagener Platz → 🍽️🌅 Klunkerkranich
-
-### Día 3 — Domingo: Futuro, Aventura + Despedida
-- 🔮 Futurium → 🚲 Tempelhofer Feld → 🍽️ Burgermeister → 🏘️ DDR Museum → 🛍️ Hackescher Markt → 🛫 BER
-
-## 📄 Licencia
-
-Uso privado. Guía creada por Claude para Victor — LUCY Matrix.
+---
+Creado por Xavi Camins y Victor Quintana & CO.
