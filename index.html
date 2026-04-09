@@ -48,11 +48,31 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-normal);letter-spacing:var(--ls-normal);font-weight:var(--fw-regular);padding-bottom:env(safe-area-inset-bottom,24px);transition:background .4s,color .4s;overflow-x:hidden}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;justify-content:space-between;align-items:center;padding:0 var(--sp-lg);height:48px;padding-top:env(safe-area-inset-top,0px);background:linear-gradient(to bottom,var(--surface) 0%,var(--surface) 60%,transparent 100%);font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);letter-spacing:var(--ls-wide)}
-.topbar-title{font-weight:var(--fw-bold);color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 var(--sp-lg);height:48px;padding-top:env(safe-area-inset-top,0px);background:linear-gradient(to bottom,var(--surface) 0%,var(--surface) 60%,transparent 100%);font-family:var(--ff-mono);font-size:var(--fs-caption);color:var(--dim);letter-spacing:var(--ls-wide)}
+.topbar-title{font-weight:var(--fw-bold);color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:6px;flex-shrink:0}
 .topbar-title b{color:var(--accent);font-weight:var(--fw-black);font-size:var(--fs-body-sm)}
-.topbar-dot{color:var(--accent);font-size:18px;line-height:1}
 .topbar-info{font-size:var(--fs-nano);color:var(--dim2)}
+.topbar-weather{display:flex;align-items:center;gap:6px;min-width:0;flex-shrink:1}
+.weather-now{display:flex;align-items:center;gap:4px;padding:5px 10px;background:var(--section);border:2px solid var(--card-border);border-radius:100px;font-family:var(--ff-mono);font-size:12px;color:var(--text);font-weight:var(--fw-bold);cursor:pointer;transition:transform .15s,opacity .2s;flex-shrink:0;letter-spacing:-0.02em}
+.weather-now:active{transform:scale(.94)}
+.weather-now.loading{opacity:.5}
+.weather-now .wni{font-size:14px;line-height:1}
+.weather-now .wnt{color:var(--text)}
+.weather-strip{display:flex;align-items:center;gap:6px;padding:5px 10px;background:var(--section);border:2px solid var(--card-border);border-radius:100px;font-family:var(--ff-mono);font-size:11px;color:var(--dim);cursor:pointer;transition:transform .15s,opacity .2s;flex-shrink:1;min-width:0;overflow:hidden;letter-spacing:0}
+.weather-strip:active{transform:scale(.97)}
+.weather-strip.loading{opacity:.5}
+.wday{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;position:relative}
+.wday + .wday{padding-left:10px}
+.wday + .wday::before{content:'';position:absolute;left:4px;top:50%;width:2px;height:2px;background:var(--dim2);border-radius:50%;transform:translateY(-50%)}
+.wday.today{color:var(--accent)}
+.wday.today .wdt{color:var(--accent)}
+.wdlbl{font-weight:var(--fw-black);letter-spacing:0.02em;font-size:10px}
+.wdnum{font-family:var(--ff-mono);font-size:9px;color:var(--dim2);font-weight:var(--fw-bold);letter-spacing:0}
+.wday.today .wdnum{color:var(--accent)}
+.wdi{font-size:12px;line-height:1}
+.wdt{color:var(--text);font-weight:var(--fw-bold);letter-spacing:-0.02em}
+@media(max-width:480px){.weather-now{display:none}}
+@media(max-width:420px){.topbar-title b{font-size:var(--fs-caption)}.weather-strip{font-size:10px;padding:4px 8px;gap:4px}.wdlbl{font-size:9px}.wdnum{font-size:8px}.wdi{font-size:11px}}
 .hero{padding:28px var(--sp-lg) 24px;margin-top:calc(48px + env(safe-area-inset-top,0px));background:radial-gradient(ellipse 75% 60% at 14% 10%,var(--hero-glow-coral),transparent 62%),radial-gradient(ellipse 65% 55% at 86% 95%,var(--hero-glow-blue),transparent 62%),var(--surface);transition:opacity .2s ease,background .4s ease}
 .hero.switching{opacity:0}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:0.75rem;font-weight:var(--fw-medium);text-transform:uppercase;color:var(--accent);background:var(--section);padding:8px 18px;border-radius:100px;letter-spacing:var(--ls-wide)}
@@ -180,7 +200,19 @@ body.offline .offline-badge{display:block}
 <body>
 
 <div class="topbar">
-  <span class="topbar-title">🇩🇪 <b>BERLÍN</b> <span class="topbar-dot">·</span> 24, 25, 26 y 27 ABRIL 2026</span>
+  <span class="topbar-title">🇩🇪 <b>BERLÍN</b></span>
+  <div class="topbar-weather">
+    <div class="weather-now" id="weatherNow" onclick="fetchWeather4(true)" role="button" tabindex="0" aria-label="Tiempo actual en Berlín">
+      <span class="wni" id="wNowI">🌡️</span>
+      <span class="wnt" id="wNowT">—°</span>
+    </div>
+    <div class="weather-strip" id="weatherStrip" onclick="fetchWeather4(true)" role="button" tabindex="0" aria-label="Previsión del viaje · Tocar para refrescar">
+      <span class="wday" id="wd0" title="Viernes 24 Abril 2026"><b class="wdlbl">VIE</b><span class="wdnum">24</span><span class="wdi">🌡️</span><span class="wdt">—°</span></span>
+      <span class="wday" id="wd1" title="Sábado 25 Abril 2026"><b class="wdlbl">SÁB</b><span class="wdnum">25</span><span class="wdi">🌡️</span><span class="wdt">—°</span></span>
+      <span class="wday" id="wd2" title="Domingo 26 Abril 2026"><b class="wdlbl">DOM</b><span class="wdnum">26</span><span class="wdi">🌡️</span><span class="wdt">—°</span></span>
+      <span class="wday" id="wd3" title="Lunes 27 Abril 2026"><b class="wdlbl">LUN</b><span class="wdnum">27</span><span class="wdi">🌡️</span><span class="wdt">—°</span></span>
+    </div>
+  </div>
 </div>
 
 <button class="tt" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">☀️</button>
@@ -876,6 +908,60 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').cat
 
 // Theme init
 (function(){let s=null;try{s=localStorage.getItem('bm-theme')}catch(e){}if(s)applyTheme(s);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)applyTheme('light');else applyTheme('dark');window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>{let x=null;try{x=localStorage.getItem('bm-theme')}catch(z){}if(!x)applyTheme(e.matches?'dark':'light')});document.querySelector('.panel.on .blk')?.classList.add('open');setBlkIdx()})()
+
+// Weather widget — Open-Meteo daily forecast (free, no API key, no registration)
+const TRIP_DAYS=[{date:'2026-04-24',label:'VIE'},{date:'2026-04-25',label:'SÁB'},{date:'2026-04-26',label:'DOM'},{date:'2026-04-27',label:'LUN'}];
+const WEATHER_ICONS={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌧️',53:'🌧️',55:'🌧️',56:'🌧️',57:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌧️',67:'🌧️',71:'❄️',73:'❄️',75:'❄️',77:'❄️',80:'🌦️',81:'⛈️',82:'⛈️',85:'❄️',86:'❄️',95:'⛈️',96:'⛈️',99:'⛈️'};
+function wIcon(c){return WEATHER_ICONS[c]||'🌡️'}
+function renderNow(data){
+  if(!data||!data.current)return;
+  const ni=document.getElementById('wNowI'),nt=document.getElementById('wNowT');
+  const t=data.current.temperature_2m,c=data.current.weather_code;
+  if(t!=null){
+    if(ni)ni.textContent=wIcon(c);
+    if(nt)nt.textContent=Math.round(t)+'°';
+  }
+  document.getElementById('weatherNow')?.classList.remove('loading');
+}
+function renderForecast(data){
+  if(!data||!data.daily||!data.daily.time)return;
+  const today=new Date().toISOString().slice(0,10);
+  const matched=[];
+  data.daily.time.forEach((date,i)=>{
+    // Match EXACT trip date, not by weekday. TRIP_DAYS has concrete dates 2026-04-24..27.
+    const tripIdx=TRIP_DAYS.findIndex(d=>d.date===date);
+    if(tripIdx<0)return;
+    const el=document.getElementById('wd'+tripIdx);
+    if(!el)return;
+    const icon=el.querySelector('.wdi'),temp=el.querySelector('.wdt');
+    const t=data.daily.temperature_2m_max[i],c=data.daily.weather_code[i];
+    if(t!=null){
+      if(icon)icon.textContent=wIcon(c);
+      if(temp)temp.textContent=Math.round(t)+'°';
+      matched.push(date+' → '+TRIP_DAYS[tripIdx].label+' '+Math.round(t)+'°');
+    }
+    el.classList.toggle('today',date===today);
+  });
+  // Defensive verification: confirm which trip dates were matched
+  if(matched.length){console.log('[weather] Matched trip dates:',matched.join(' · '))}
+  const missing=TRIP_DAYS.filter(d=>!data.daily.time.includes(d.date));
+  if(missing.length){console.warn('[weather] Trip dates not yet in forecast window:',missing.map(d=>d.date+' ('+d.label+')').join(', '))}
+  document.getElementById('weatherStrip')?.classList.remove('loading');
+}
+function wLoadCache(){try{const r=localStorage.getItem('bm-weather');if(r){const d=JSON.parse(r);if(d){renderNow(d);renderForecast(d)}}}catch(e){}}
+function fetchWeather4(manual){
+  const ps=document.getElementById('weatherStrip'),pn=document.getElementById('weatherNow');
+  if(manual){ps?.classList.add('loading');pn?.classList.add('loading')}
+  // current + daily forecast (16 days) in single request
+  const url='https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&current=temperature_2m,weather_code&daily=temperature_2m_max,weather_code&forecast_days=16&timezone=auto';
+  fetch(url).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d){ps?.classList.remove('loading');pn?.classList.remove('loading');return}
+    renderNow(d);
+    renderForecast(d);
+    try{localStorage.setItem('bm-weather',JSON.stringify(d))}catch(e){}
+  }).catch(()=>{ps?.classList.remove('loading');pn?.classList.remove('loading')});
+}
+wLoadCache();fetchWeather4(false);setInterval(()=>fetchWeather4(false),15*60*1000);
 </script>
 </body>
 </html>

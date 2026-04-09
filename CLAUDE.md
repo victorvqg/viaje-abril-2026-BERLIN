@@ -73,7 +73,7 @@ Cada `.blk` de los días VIE-LUN incluye su propia guía detallada (`guide-txt`,
 - Map buttons: `class="bmap"` con Google Maps URLs
 
 ## Service Worker
-- Cache name: `berlin-mission-v17` (IMPORTANTE: bumpar al modificar)
+- Cache name: `berlin-mission-v21` (IMPORTANTE: bumpar al modificar)
 - Si cambias index.html, bumpar el CACHE_NAME en sw.js
 
 ## Comandos útiles

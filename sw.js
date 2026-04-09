@@ -1,4 +1,4 @@
-const CACHE_NAME = 'berlin-mission-v17';
+const CACHE_NAME = 'berlin-mission-v21';
 const ASSETS = [
   './',
   './index.html',
@@ -22,6 +22,7 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.url.includes('google.com/maps')) return;
+  if (e.request.url.includes('api.open-meteo.com')) return;
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
       if (res.ok && e.request.method === 'GET') {
