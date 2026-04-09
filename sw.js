@@ -1,4 +1,4 @@
-const CACHE_NAME = 'berlin-mission-v6';
+const CACHE_NAME = 'berlin-mission-v17';
 const ASSETS = [
   './',
   './index.html',
