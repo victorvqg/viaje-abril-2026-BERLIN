@@ -13,7 +13,7 @@ Repo GitHub Pages: `https://victorvqg.github.io/viaje-abril-2026-BERLIN/`
 ## Viaje
 - **Destino:** Berlín, 24-27 Abril 2026
 - **Grupo:** Mayte, Sílvia, Xavi, Victor y Biel (4 adultos + 1 niño 12 años)
-- **Hotel:** Wilde Aparthotels, Zimmerstraße 91, 10117 Berlin-Mitte
+- **Hotel:** Mercure Hotel & Residenz Checkpoint Charlie, Schützenstraße 11, 10117 Berlin-Mitte
 - **Metro base:** U Kochstraße (U6), 3 min a pie
 
 ## Design System: The Nocturnal Concierge
@@ -52,7 +52,7 @@ Repo GitHub Pages: `https://victorvqg.github.io/viaje-abril-2026-BERLIN/`
 | Body | Plus Jakarta Sans | 1rem/18px | Regular (400) | Texto corriente |
 | Metadata | JetBrains Mono | 0.75rem | Medium (500) | Horas, precios, direcciones |
 
-## Estructura de pestañas (8)
+## Estructura de pestañas (6)
 | # | Tab | Panel ID | Contenido |
 |---|-----|----------|-----------|
 | 0 | 🏠 | phome | Índice visual del viaje |
@@ -60,9 +60,9 @@ Repo GitHub Pages: `https://victorvqg.github.io/viaje-abril-2026-BERLIN/`
 | 2 | SÁB | p1 | Día 2: Historia + Vibe |
 | 3 | DOM | p2 | Día 3: Ciencia + Río |
 | 4 | LUN | p3 | Día 4: Despedida |
-| 5 | 🏨 | p4 | Hotel + Mapa pins |
-| 6 | ℹ️ | p5 | Más info (detalles hotel) |
-| 7 | 🔗 | p6 | Links (guía de sitios + webs) |
+| 5 | 🏨 | p4 | Hotel + detalles (amenities, desayuno, habs) |
+
+Cada `.blk` de los días VIE-LUN incluye su propia guía detallada (`guide-txt`, `guide-tags`, `guide-tip`) + link web oficial (`bmap sm` verde). Los pins globales y la guía separada fueron consolidados dentro de cada bloque del día.
 
 ## Convenciones de código
 - CSS inline en `<style>` dentro del HTML (single-file PWA)
@@ -73,7 +73,7 @@ Repo GitHub Pages: `https://victorvqg.github.io/viaje-abril-2026-BERLIN/`
 - Map buttons: `class="bmap"` con Google Maps URLs
 
 ## Service Worker
-- Cache name: `berlin-mission-v6` (IMPORTANTE: bumpar al modificar)
+- Cache name: `berlin-mission-v17` (IMPORTANTE: bumpar al modificar)
 - Si cambias index.html, bumpar el CACHE_NAME en sw.js
 
 ## Comandos útiles

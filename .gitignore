@@ -12,3 +12,10 @@
 
 # Logs
 *.log
+
+# Playwright testing
+.playwright-mcp/
+berlin-*.png
+
+# Notes personales
+*.rtf
