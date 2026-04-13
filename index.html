@@ -72,6 +72,7 @@ body{font-family:var(--ff-body);background:var(--floor);color:var(--text);font-s
 .wday.today .wdnum{color:var(--accent)}
 .wdi{font-size:12px;line-height:1}
 .wdt{color:var(--text);font-weight:var(--fw-bold);letter-spacing:-0.02em}
+.wdmin{color:var(--dim2);font-weight:var(--fw-regular);font-size:0.9em}
 @media(max-width:440px){
   .topbar{padding:8px var(--sp-md);padding-top:calc(8px + env(safe-area-inset-top,0px))}
   .weather-strip{font-size:10px;padding:4px 8px;gap:4px}
@@ -928,11 +929,14 @@ function renderForecast(data){
     const el=document.getElementById('wd'+tripIdx);
     if(!el)return;
     const icon=el.querySelector('.wdi'),temp=el.querySelector('.wdt');
-    const t=data.daily.temperature_2m_max[i],c=data.daily.weather_code[i];
-    if(t!=null){
+    const tMax=data.daily.temperature_2m_max[i],tMin=data.daily.temperature_2m_min?data.daily.temperature_2m_min[i]:null,c=data.daily.weather_code[i];
+    if(tMax!=null){
       if(icon)icon.textContent=wIcon(c);
-      if(temp)temp.textContent=Math.round(t)+'°';
-      matched.push(date+' → '+TRIP_DAYS[tripIdx].label+' '+Math.round(t)+'°');
+      if(temp){
+        if(tMin!=null)temp.innerHTML=Math.round(tMax)+'°<span class="wdmin">/'+Math.round(tMin)+'°</span>';
+        else temp.textContent=Math.round(tMax)+'°';
+      }
+      matched.push(date+' → '+TRIP_DAYS[tripIdx].label+' '+Math.round(tMax)+'°'+(tMin!=null?'/'+Math.round(tMin)+'°':''));
     }
     el.classList.toggle('today',date===today);
   });
@@ -947,7 +951,7 @@ function fetchWeather4(manual){
   const ps=document.getElementById('weatherStrip'),pn=document.getElementById('weatherNow');
   if(manual){ps?.classList.add('loading');pn?.classList.add('loading')}
   // current + daily forecast (16 days) in single request
-  const url='https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&current=temperature_2m,weather_code&daily=temperature_2m_max,weather_code&forecast_days=16&timezone=auto';
+  const url='https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=16&timezone=auto';
   fetch(url).then(r=>r.ok?r.json():null).then(d=>{
     if(!d){ps?.classList.remove('loading');pn?.classList.remove('loading');return}
     renderNow(d);
